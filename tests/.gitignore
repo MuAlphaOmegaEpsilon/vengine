@@ -1,0 +1,9 @@
+# Ignore both root files and root directories...
+/*
+
+# ...except these files down here...
+!/build.sh
+!/run.sh
+!/setup.sh
+!/shellcheck.sh
+!/.gitignore
