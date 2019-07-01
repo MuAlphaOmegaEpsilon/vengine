@@ -1,0 +1,16 @@
+# Ignore both root files and root directories...
+/*
+
+# ...except these folders (and eventually their content) down here...
+!/libs
+!/tests
+!/.git
+
+# ...and except these files down here...
+!/vengine.hpp
+!/CMakeLists.txt
+!/LICENSE
+!/README.md
+!/sonar-project.properties
+!/.gitignore
+!/.travis.yml
