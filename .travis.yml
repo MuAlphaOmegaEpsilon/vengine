@@ -1,0 +1,25 @@
+language: cpp
+
+dist: xenial
+
+matrix:
+  fast_finish: true
+  include:
+
+    - os: linux
+      compiler: clang  
+
+    - os: linux
+      compiler: g++
+      env: 
+        - COVERAGE=true
+      addons:
+        sonarcloud:
+          organization: "mualphaomegaepsilon-github"
+
+    - os: osx
+
+    - os: windows
+
+script:
+  - if [ -n "${SONAR_SCANNER_HOME:-}" ]; then git fetch --unshallow; fi
