@@ -22,4 +22,4 @@ matrix:
     - os: windows
 
 script:
-  - if [ -n "${SONAR_SCANNER_HOME:-}" ]; then git fetch --unshallow; fi
+  - if [ -n "${SONAR_SCANNER_HOME:-}" ]; then git fetch --unshallow || echo "No need to unshallow"; fi
