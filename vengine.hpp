@@ -19,11 +19,11 @@ namespace vengine
 
     VkInstance vkInstance;
 
-    bool initializeVulkan (const char* appName, uint32_t appVersion);
+    VkError initializeVulkan (const char* appName, uint32_t appVersion);
     void destroyVulkan ();
 }
 
-bool vengine::initializeVulkan (const char* appName, uint32_t appVersion)
+VkError vengine::initializeVulkan (const char* appName, uint32_t appVersion)
 {
     using namespace vengine;
 
@@ -46,7 +46,7 @@ bool vengine::initializeVulkan (const char* appName, uint32_t appVersion)
         0, nullptr,
         0, nullptr
     };
-    assert (vkCreateInstance (&vkInstanceCreationInfo, allocator, &vkInstance) == VkResult::VK_SUCCESS);
+    return vkCreateInstance (&vkInstanceCreationInfo, allocator, &vkInstance);
 }
 
 void vengine::destroyVulkan ()
