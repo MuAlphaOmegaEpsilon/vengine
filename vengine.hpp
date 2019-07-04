@@ -5,11 +5,11 @@
  * @date 01-07-2019
  */
 
-#include <assert.h>
-#include <vulkan/vulkan.h>
-
 #ifndef VENGINE_HPP
 #define VENGINE_HPP
+
+#include <assert.h>
+#include <vulkan/vulkan.h>
 
 namespace vengine
 {
