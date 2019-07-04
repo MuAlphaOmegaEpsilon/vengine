@@ -8,12 +8,19 @@ matrix:
 
     - os: linux
       compiler: clang  
+      addons:
+        apt:
+          packages:
+          - libvulkan-dev
 
     - os: linux
       compiler: g++
       env: 
         - COVERAGE=true
       addons:
+        apt:
+          packages:
+          - libvulkan-dev
         sonarcloud:
           organization: "mualphaomegaepsilon-github"
 
