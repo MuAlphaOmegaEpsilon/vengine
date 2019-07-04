@@ -2,8 +2,10 @@
 /*
 
 # ...except these files down here...
+!/CMakeLists.txt
 !/build.sh
 !/run.sh
 !/setup.sh
 !/shellcheck.sh
+!/test_initializeVulkan.cpp
 !/.gitignore
