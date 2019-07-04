@@ -36,3 +36,4 @@ script:
   - ./tests/build.sh
   - ./tests/run.sh
   - if [ -n "${SONAR_SCANNER_HOME:-}" ]; then sonar-scanner; fi
+  - cd tests/build/ && ./test_initializeVulkan && echo $?
