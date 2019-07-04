@@ -11,6 +11,8 @@
 #include <assert.h>
 #include <vulkan/vulkan.h>
 
+using VkError = VkResult;
+
 namespace vengine
 {
     constexpr VkAllocationCallbacks* allocator = nullptr;
