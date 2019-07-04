@@ -31,10 +31,8 @@ VkError vengine::initializeVulkan (const char* appName, uint32_t appVersion)
     {
         VkStructureType::VK_STRUCTURE_TYPE_APPLICATION_INFO,
         nullptr,
-        appName,
-        appVersion,
-        "Vengine",
-        VK_MAKE_VERSION (1, 0, 0),
+        appName, appVersion,
+        "Vengine", VK_MAKE_VERSION (1, 0, 0),
         VK_API_VERSION_1_1
     };
     const VkInstanceCreateInfo vkInstanceCreationInfo = 
