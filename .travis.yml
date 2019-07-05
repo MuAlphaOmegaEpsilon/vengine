@@ -33,7 +33,6 @@ matrix:
         homebrew:
           packages:
           - vulkan-headers
-          update: true
 
     - os: windows
 
