@@ -13,3 +13,6 @@ printf "%sCHECKING SCRIPTS VALIDITY%s\\n" "${ORANGE}" "${NOCOLOR}"
 shellcheck setup.sh
 shellcheck build.sh
 shellcheck run.sh
+cd ../scripts
+shellcheck installVulkan.sh
+
