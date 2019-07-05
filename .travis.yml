@@ -13,6 +13,7 @@ matrix:
       compiler: g++
       env: 
         - COVERAGE=true
+      addons:
         sonarcloud:
           organization: "mualphaomegaepsilon-github"
 
