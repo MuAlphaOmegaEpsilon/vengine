@@ -35,6 +35,7 @@ matrix:
           - libvulkan-dev
           - mesa-vulkan-drivers
           - vulkan-utils
+          update: true
 
     - os: windows
 
