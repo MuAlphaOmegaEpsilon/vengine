@@ -32,9 +32,7 @@ matrix:
       addons:
         homebrew:
           packages:
-          - libvulkan-dev
-          - mesa-vulkan-drivers
-          - vulkan-utils
+          - vulkan-headers
           update: true
 
     - os: windows
