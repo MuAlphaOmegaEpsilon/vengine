@@ -13,7 +13,6 @@ matrix:
           packages:
           - libvulkan-dev
           - mesa-vulkan-drivers
-          - vulkan-info
           - vulkan-utils
 
     - os: linux
@@ -25,7 +24,6 @@ matrix:
           packages:
           - libvulkan-dev
           - mesa-vulkan-drivers
-          - vulkan-info
           - vulkan-utils
         sonarcloud:
           organization: "mualphaomegaepsilon-github"
