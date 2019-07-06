@@ -34,8 +34,8 @@ case "$(uname -s)" in
         echo "${VULKAN_SDK}"
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
-        DownloadFile "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe -FileName vulkan.exe
-        vulkan.exe /S
+        wget -q "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe
+        VulkanSDK-"${VK_VERSION}"-Installer.exe /S
         ;;
     *)
         return 1
