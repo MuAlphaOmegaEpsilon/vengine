@@ -6,7 +6,8 @@ matrix:
   include:
   - os: linux
     compiler: clang
-    apt:
+    addons:
+      apt:
         packages:
           - mesa-vulkan-drivers
 
