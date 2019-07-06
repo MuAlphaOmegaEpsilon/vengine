@@ -1,8 +1,7 @@
 #!/bin/sh
 set -euf
 
-### NAVIGATE TO THE ROOT FOLDER ###
-cd "$(dirname "$0")/.."
+### CALL THIS SCRIPT FROM THE PROJECT ROOT FOLDER ###
 
 ### COLORING SCHEME ###
 ORANGE=$(tput setaf 3)
