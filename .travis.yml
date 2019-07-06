@@ -8,12 +8,18 @@ matrix:
 
     - os: linux
       compiler: clang
+      apt:
+          packages:
+            - mesa-vulkan-drivers
 
     - os: linux
       compiler: g++
       env: 
         - COVERAGE=true
       addons:
+        apt:
+          packages:
+            - mesa-vulkan-drivers
         sonarcloud:
           organization: "mualphaomegaepsilon-github"
 
