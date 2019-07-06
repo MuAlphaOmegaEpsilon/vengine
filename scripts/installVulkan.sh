@@ -26,9 +26,7 @@ case "$(uname -s)" in
         tar xf vulkansdk-linux-"${VK_VERSION}".tar.gz > /dev/null
         mv "${VK_VERSION}"/ vulkan-sdk/
         cd vulkan-sdk
-        chmod +x setup-env.sh
-        cat setup-env.sh
-        ./setup-env.sh
+        source setup-env.sh
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
         wget "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe > NUL
