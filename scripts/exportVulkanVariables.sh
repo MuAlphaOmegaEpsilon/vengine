@@ -3,10 +3,6 @@ set -euf
 
 ### CALL THIS SCRIPT FROM THE PROJECT ROOT FOLDER ###
 
-### COLORING SCHEME ###
-ORANGE=$(tput setaf 3)
-NOCOLOR=$(tput sgr0)
-
 ### SCRIPT CORE ###
 VULKAN_VERSION=1.1.108.0 && export VULKAN_VERSION
 
