@@ -3,7 +3,6 @@ language: cpp
 dist: xenial
 
 matrix:
-  fast_finish: true
   include:
 
     - os: linux
