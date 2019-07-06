@@ -33,8 +33,8 @@ case "$(uname -s)" in
         VK_LAYER_PATH="${VULKAN_SDK}/etc/vulkan/explicit_layer.d" && export VK_LAYER_PATH
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
-        wget -q "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe
-        VulkanSDK-"${VK_VERSION}"-Installer.exe
+        DownloadFile "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe -FileName vulkan.exe
+        vulkan.exe /S
         ;;
     *)
         return 1
