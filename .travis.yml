@@ -4,30 +4,30 @@ dist: xenial
 
 matrix:
   include:
+  - os: linux
+    compiler: clang
+    apt:
+        packages:
+          - mesa-vulkan-drivers
 
-    - os: linux
-      compiler: clang
+  - os: linux
+    compiler: g++
+    env: 
+      - COVERAGE=true
+    addons:
       apt:
-          packages:
-            - mesa-vulkan-drivers
+        packages:
+          - mesa-vulkan-drivers
+      sonarcloud:
+        organization: "mualphaomegaepsilon-github"
 
-    - os: linux
-      compiler: g++
-      env: 
-        - COVERAGE=true
-      addons:
-        apt:
-          packages:
-            - mesa-vulkan-drivers
-        sonarcloud:
-          organization: "mualphaomegaepsilon-github"
+  - os: osx
 
-    - os: osx
+  - os: windows
 
-    - os: windows
 
 install:
-  - ./scripts/installVulkan.sh
+- ./scripts/installVulkan.sh
 
 script:
 - if [ -n "${SONAR_SCANNER_HOME:-}" ]; then git fetch --unshallow || echo "No need to unshallow"; fi
