@@ -18,7 +18,8 @@ case "$(uname -s)" in
         wget "${LUNARG_URL}"/mac/vulkansdk-macos-"${VK_VERSION}".tar.gz 
         tar xf vulkansdk-macos-"${VK_VERSION}".tar.gz > /dev/null
         mv "${VK_VERSION}"/ vulkan-sdk/
-        .vulkan-sdk/install_vulkan.py
+        cd vulkan-sdk
+        ./install_vulkan.py
         ;;
     Linux) # linux
         wget "${LUNARG_URL}"/linux/vulkansdk-linux-"${VK_VERSION}".tar.gz 
