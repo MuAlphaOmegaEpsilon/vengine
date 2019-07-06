@@ -29,7 +29,7 @@ case "$(uname -s)" in
         ./setup-env.sh
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
-        wget "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe > /dev/null
+        wget "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe > NUL
         VulkanSDK-"${VK_VERSION}"-Installer.exe /S
         ;;
     *)
