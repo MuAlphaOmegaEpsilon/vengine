@@ -35,7 +35,7 @@ case "$(uname -s)" in
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
         wget -q "${LUNARG_URL}"/windows/VulkanSDK-"${VULKAN_VERSION}"-Installer.exe
-        VulkanSDK-"${VULKAN_VERSION}"-Installer.exe /S
+        ./VulkanSDK-"${VULKAN_VERSION}"-Installer.exe /S
         VULKAN_SDK="C:\\VulkanSDK\\${VULKAN_VERSION}" && export VULKAN_SDK
         ;;
     *)
