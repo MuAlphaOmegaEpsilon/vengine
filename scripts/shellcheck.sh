@@ -10,9 +10,9 @@ NOCOLOR=$(tput sgr0)
 
 ### SCRIPT CORE ###
 printf "%sCHECKING SCRIPTS VALIDITY%s\\n" "${ORANGE}" "${NOCOLOR}"
+shellcheck installVulkan.sh
+
+cd ../tests
 shellcheck setup.sh
 shellcheck build.sh
 shellcheck run.sh
-cd ../scripts
-shellcheck installVulkan.sh
-
