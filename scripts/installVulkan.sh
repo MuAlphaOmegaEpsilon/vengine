@@ -15,21 +15,25 @@ LUNARG_URL=https://sdk.lunarg.com/sdk/download/"${VK_VERSION}"
 
 case "$(uname -s)" in
     Darwin) # osx
-        wget "${LUNARG_URL}"/mac/vulkansdk-macos-"${VK_VERSION}".tar.gz > /dev/null
-        tar xf vulkansdk-macos-"${VK_VERSION}".tar.gz > /dev/null
-        mv "${VK_VERSION}"/ vulkan-sdk/
+        wget -q "${LUNARG_URL}"/mac/vulkansdk-macos-"${VK_VERSION}".tar.gz
+        tar xf vulkansdk-macos-"${VK_VERSION}".tar.gz
+        mv vulkansdk-macos-"${VK_VERSION}"/ vulkan-sdk/
         cd vulkan-sdk
         ./install_vulkan.py
         ;;
     Linux) # linux
-        wget "${LUNARG_URL}"/linux/vulkansdk-linux-"${VK_VERSION}".tar.gz > /dev/null
-        tar xf vulkansdk-linux-"${VK_VERSION}".tar.gz > /dev/null
+        wget -q "${LUNARG_URL}"/linux/vulkansdk-linux-"${VK_VERSION}".tar.gz
+        tar xf vulkansdk-linux-"${VK_VERSION}".tar.gz
         mv "${VK_VERSION}"/ vulkan-sdk/
-        cd vulkan-sdk
-        source setup-env.sh
+        VULKAN_SDK="$(pwd)/vulkan-sdk/x86_64" && export VULKAN_SDK
+        Vulkan_LIBRARY="${VULKAN_SDK}/lib/libvulkan.so.${VK_VERSION}" && export Vulkan_LIBRARY
+        Vulkan_INCLUDE_DIR="${VULKAN_SDK}/include" && export Vulkan_INCLUDE_DIR
+        PATH="${VULKAN_SDK}/bin:$PATH" && export PATH
+        LD_LIBRARY_PATH="${VULKAN_SDK}/lib:${LD_LIBRARY_PATH:-}" && export LD_LIBRARY_PATH
+        VK_LAYER_PATH="${VULKAN_SDK}/etc/vulkan/explicit_layer.d" && export VK_LAYER_PATH
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
-        wget "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe
+        wget -q "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe
         VulkanSDK-"${VK_VERSION}"-Installer.exe
         ;;
     *)
