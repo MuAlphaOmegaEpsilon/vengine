@@ -10,23 +10,23 @@ NOCOLOR=$(tput sgr0)
 
 ### SCRIPT CORE ###
 printf "%sINSTALLING VULKAN-SDK%s\\n" "${ORANGE}" "${NOCOLOR}"
-VK_VERSION=1.1.108.0
-LUNARG_URL=https://sdk.lunarg.com/sdk/download/"${VK_VERSION}"
+VULKAN_VERSION=1.1.108.0
+LUNARG_URL=https://sdk.lunarg.com/sdk/download/"${VULKAN_VERSION}"
 
 case "$(uname -s)" in
     Darwin) # osx
-        wget -q "${LUNARG_URL}"/mac/vulkansdk-macos-"${VK_VERSION}".tar.gz
-        tar xf vulkansdk-macos-"${VK_VERSION}".tar.gz
-        mv vulkansdk-macos-"${VK_VERSION}"/ vulkan-sdk/
+        wget -q "${LUNARG_URL}"/mac/vulkansdk-macos-"${VULKAN_VERSION}".tar.gz
+        tar xf vulkansdk-macos-"${VULKAN_VERSION}".tar.gz
+        mv vulkansdk-macos-"${VULKAN_VERSION}"/ vulkan-sdk/
         cd vulkan-sdk
         ./install_vulkan.py
         ;;
     Linux) # linux
-        wget -q "${LUNARG_URL}"/linux/vulkansdk-linux-"${VK_VERSION}".tar.gz
-        tar xf vulkansdk-linux-"${VK_VERSION}".tar.gz
-        mv "${VK_VERSION}"/ vulkan-sdk/
+        wget -q "${LUNARG_URL}"/linux/vulkansdk-linux-"${VULKAN_VERSION}".tar.gz
+        tar xf vulkansdk-linux-"${VULKAN_VERSION}".tar.gz
+        mv "${VULKAN_VERSION}"/ vulkan-sdk/
         VULKAN_SDK="$(pwd)/vulkan-sdk/x86_64" && export VULKAN_SDK
-        VULKAN_LIBRARY="${VULKAN_SDK}/lib/libvulkan.so.${VK_VERSION}" && export VULKAN_LIBRARY
+        VULKAN_LIBRARY="${VULKAN_SDK}/lib/libvulkan.so.${VULKAN_VERSION}" && export VULKAN_LIBRARY
         VULKAN_INCLUDE_DIR="${VULKAN_SDK}/include" && export VULKAN_INCLUDE_DIR
         PATH="${VULKAN_SDK}/bin:$PATH" && export PATH
         LD_LIBRARY_PATH="${VULKAN_SDK}/lib:${LD_LIBRARY_PATH:-}" && export LD_LIBRARY_PATH
@@ -34,8 +34,8 @@ case "$(uname -s)" in
         echo "${VULKAN_SDK}"
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
-        wget -q "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe
-        VulkanSDK-"${VK_VERSION}"-Installer.exe /S
+        wget -q "${LUNARG_URL}"/windows/VulkanSDK-"${VULKAN_VERSION}"-Installer.exe
+        VulkanSDK-"${VULKAN_VERSION}"-Installer.exe /S
         ;;
     *)
         return 1
