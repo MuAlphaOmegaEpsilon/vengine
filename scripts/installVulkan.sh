@@ -27,6 +27,7 @@ case "$(uname -s)" in
         mv "${VK_VERSION}"/ vulkan-sdk/
         cd vulkan-sdk
         chmod +x setup-env.sh
+        cat setup-env.sh
         ./setup-env.sh
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
