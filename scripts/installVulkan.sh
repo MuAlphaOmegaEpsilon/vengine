@@ -24,12 +24,15 @@ case "$(uname -s)" in
         wget "${LUNARG_URL}"/linux/vulkansdk-linux-"${VK_VERSION}".tar.gz 
         tar xf vulkansdk-linux-"${VK_VERSION}".tar.gz
         mv "${VK_VERSION}"/ vulkan-sdk/
-        .vulkan-sdk/setup-env.sh
+        cd vulkan-sdk
+        chmod +x setup-env.sh
+        ./setup-env.sh
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
         wget "${LUNARG_URL}"/windows/VulkanSDK-"${VK_VERSION}"-Installer.exe
         VulkanSDK-"${VK_VERSION}"-Installer.exe /S
         ;;
     *)
+        return 1
         ;;
 esac
