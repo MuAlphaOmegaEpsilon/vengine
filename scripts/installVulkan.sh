@@ -26,8 +26,8 @@ case "$(uname -s)" in
         tar xf vulkansdk-linux-"${VK_VERSION}".tar.gz
         mv "${VK_VERSION}"/ vulkan-sdk/
         VULKAN_SDK="$(pwd)/vulkan-sdk/x86_64" && export VULKAN_SDK
-        Vulkan_LIBRARY="${VULKAN_SDK}/lib/libvulkan.so.${VK_VERSION}" && export Vulkan_LIBRARY
-        Vulkan_INCLUDE_DIR="${VULKAN_SDK}/include" && export Vulkan_INCLUDE_DIR
+        VULKAN_LIBRARY="${VULKAN_SDK}/lib/libvulkan.so.${VK_VERSION}" && export VULKAN_LIBRARY
+        VULKAN_INCLUDE_DIR="${VULKAN_SDK}/include" && export VULKAN_INCLUDE_DIR
         PATH="${VULKAN_SDK}/bin:$PATH" && export PATH
         LD_LIBRARY_PATH="${VULKAN_SDK}/lib:${LD_LIBRARY_PATH:-}" && export LD_LIBRARY_PATH
         VK_LAYER_PATH="${VULKAN_SDK}/etc/vulkan/explicit_layer.d" && export VK_LAYER_PATH
