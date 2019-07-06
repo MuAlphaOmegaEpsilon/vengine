@@ -10,7 +10,7 @@ NOCOLOR=$(tput sgr0)
 
 ### SCRIPT CORE ###
 printf "%sINSTALLING VULKAN-SDK%s\\n" "${ORANGE}" "${NOCOLOR}"
-VULKAN_VERSION=1.1.108.0
+VULKAN_VERSION=1.1.108.0 && export VULKAN_VERSION
 LUNARG_URL=https://sdk.lunarg.com/sdk/download/"${VULKAN_VERSION}"
 
 case "$(uname -s)" in
