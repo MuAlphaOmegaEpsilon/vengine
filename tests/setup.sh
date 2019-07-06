@@ -10,6 +10,7 @@ NOCOLOR=$(tput sgr0)
 
 ### SCRIPT CORE ###
 printf "%sSETTING UP TESTS%s\\n" "${ORANGE}" "${NOCOLOR}"
+. ../scripts/exportVulkanVariables.sh
 if [ -d build ]; then 
 	rm -rf build 
 fi
