@@ -23,6 +23,7 @@ matrix:
         organization: "mualphaomegaepsilon-github"
 
   - os: osx
+    osx_image: xcode10.2
 
   - os: windows
 
