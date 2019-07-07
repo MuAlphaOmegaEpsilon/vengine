@@ -17,9 +17,7 @@ case "$(uname -s)" in
     Darwin) # osx
         wget -q "${LUNARG_URL}"/mac/vulkansdk-macos-"${VULKAN_VERSION}".tar.gz
         tar xf vulkansdk-macos-"${VULKAN_VERSION}".tar.gz
-        mv vulkansdk-macos-"${VULKAN_VERSION}"/ vulkan-sdk/
-        cd vulkan-sdk
-        ./install_vulkan.py
+        ./vulkansdk-macos-"${VULKAN_VERSION}"/install_vulkan.py
         ;;
     Linux) # linux
         wget -q "${LUNARG_URL}"/linux/vulkansdk-linux-"${VULKAN_VERSION}".tar.gz
