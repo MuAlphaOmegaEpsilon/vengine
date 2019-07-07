@@ -8,6 +8,7 @@ VULKAN_VERSION=1.1.108.0 && export VULKAN_VERSION
 
 case "$(uname -s)" in
     Darwin) # osx
+        MOLTENVK_DIR="$(pwd)/vulkansdk-macos-${VULKAN_VERSION}/MoltenVK" && export MOLTENVK_DIR
         ;;
     Linux) # linux
         VULKAN_SDK="$(pwd)/vulkan-sdk/x86_64" && export VULKAN_SDK
