@@ -25,8 +25,8 @@ case "$(uname -s)" in
         mv "${VULKAN_VERSION}"/ vulkan-sdk/
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
-        wget "${LUNARG_URL}"/windows/VulkanSDK-"${VULKAN_VERSION}"-Installer.exe
-        ./VulkanSDK-"${VULKAN_VERSION}"-Installer.exe
+        wget "${LUNARG_URL}"/"${VULKAN_VERSION}"/windows/vulkan-sdk.exe?Human=true;u=
+        ./vulkan-sdk.exe /S
         ;;
     *)
         return 1
