@@ -1,10 +1,9 @@
 language: cpp
 
-dist: xenial
-
 matrix:
   include:
   - os: linux
+    dist: xenial
     compiler: clang
     addons:
       apt:
@@ -12,6 +11,7 @@ matrix:
           - mesa-vulkan-drivers
 
   - os: linux
+    dist: xenial
     compiler: g++
     env: 
       - COVERAGE=true
@@ -32,6 +32,9 @@ before-install:
 
 install:
 - ./scripts/installVulkan.sh
+
+before-script:
+- vulkaninfo
 
 script:
 - if [ -n "${SONAR_SCANNER_HOME:-}" ]; then git fetch --unshallow || echo "No need to unshallow"; fi
