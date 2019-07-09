@@ -12,8 +12,6 @@ cd tests
 ORANGE=$(tput setaf 3)
 NOCOLOR=$(tput sgr0)
 
-VulkanHeaders_INCLUDE_DIRS="$(pwd)/libs/Vulkan-Headers/include" && export VulkanHeaders_INCLUDE_DIRS
-
 ### SCRIPT CORE ###
 printf "%sSETTING UP TESTS%s\\n" "${ORANGE}" "${NOCOLOR}"
 if [ -d build ]; then 
