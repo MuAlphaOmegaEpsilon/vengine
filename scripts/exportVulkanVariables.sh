@@ -6,13 +6,14 @@ set -euf
 ### SCRIPT CORE ###
 VULKAN_VERSION=1.1.108.0 && export VULKAN_VERSION
 
+Vulkan_INCLUDE_DIR="libs/Vulkan-Headers" && export Vulkan_INCLUDE_DIR
+
 case "$(uname -s)" in
     Darwin) # osx
         MOLTENVK_DIR="$(pwd)/vulkansdk-macos-${VULKAN_VERSION}/MoltenVK" && export MOLTENVK_DIR
         ;;
     Linux) # linux
         VULKAN_SDK="$(pwd)/vulkan-sdk/x86_64" && export VULKAN_SDK
-        Vulkan_LIBRARY="${VULKAN_SDK}/lib" && export Vulkan_LIBRARY
         Vulkan_INCLUDE_DIR="${VULKAN_SDK}/include" && export Vulkan_INCLUDE_DIR
         PATH="${VULKAN_SDK}/bin:$PATH" && export PATH
         LD_LIBRARY_PATH="${VULKAN_SDK}/lib:${LD_LIBRARY_PATH:-}" && export LD_LIBRARY_PATH
