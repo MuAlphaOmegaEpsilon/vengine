@@ -4,7 +4,7 @@ set -euf
 
 ### NAVIGATE TO THE ROOT FOLDER ###
 cd "$(dirname "$0")/.."
-. ./scripts/exportVulkanVariables.sh
+#. ./scripts/exportVulkanVariables.sh
 ### NAVIGATE TO THE TESTS FOLDER ###
 cd tests
 
