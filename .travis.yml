@@ -1,24 +1,20 @@
 language: cpp
+dist: xenial
+addons:
+      apt:
+        packages:
+          - mesa-vulkan-drivers
 
 matrix:
   include:
   - os: linux
-    dist: xenial
     compiler: clang
-    addons:
-      apt:
-        packages:
-          - mesa-vulkan-drivers
+    
 
   - os: linux
-    dist: xenial
-    compiler: g++
     env: 
       - COVERAGE=true
     addons:
-      apt:
-        packages:
-          - mesa-vulkan-drivers
       sonarcloud:
         organization: "mualphaomegaepsilon-github"
 
@@ -30,7 +26,6 @@ matrix:
 script:
 - if [ -n "${COVERAGE:-}" ]; then ./scripts/shellcheck.sh; fi  
 - ./scripts/installVulkan.sh
-- vulkaninfo
 - if [ -n "${SONAR_SCANNER_HOME:-}" ]; then git fetch --unshallow || echo "No need to unshallow"; fi
 - if [ -n "${COVERAGE:-}" ]; then sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov; fi
 - ./tests/setup.sh
