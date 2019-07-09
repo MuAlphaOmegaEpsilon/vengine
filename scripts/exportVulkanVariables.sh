@@ -6,7 +6,7 @@ set -euf
 ### SCRIPT CORE ###
 VULKAN_VERSION=1.1.108.0 && export VULKAN_VERSION
 
-Vulkan_INCLUDE_DIR="libs/Vulkan-Headers/include" && export Vulkan_LIBRARY
+Vulkan_INCLUDE_DIR="$(pwd)/libs/Vulkan-Headers/include" && export Vulkan_INCLUDE_DIR
 
 case "$(uname -s)" in
     Darwin) # osx
