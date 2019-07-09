@@ -25,7 +25,6 @@ case "$(uname -s)" in
         # mv "${VULKAN_VERSION}"/ vulkan-sdk/
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
-    https://sdk.lunarg.com/sdk/download/1.1.108.0/windows/VulkanRT-1.1.108.0-Installer.exe
         wget "${LUNARG_URL}/windows/VulkanRT-${VULKAN_VERSION}-Installer.exe" -O vulkan-runtime.exe
         .\\vulkan-runtime.exe /S
         ;;
