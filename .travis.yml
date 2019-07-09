@@ -8,8 +8,7 @@ addons:
 matrix:
   include:
   - os: linux
-    compiler: clang
-    
+    compiler: clang    
 
   - os: linux
     env: 
