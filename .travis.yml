@@ -21,6 +21,7 @@ matrix:
     osx_image: xcode10.2
 
   - os: windows
+    python: "3.6"
 
 script:
 - if [ -n "${COVERAGE:-}" ]; then ./scripts/shellcheck.sh; fi  
