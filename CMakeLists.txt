@@ -17,6 +17,9 @@ PROJECT (vengine VERSION 1.0.0 LANGUAGES CXX DESCRIPTION "A C++17 Vulkan barebon
 ###############################################################################
 #                                DEPENDENCIES                                 #
 ###############################################################################
+SET (BUILD_WSI_XCB_SUPPORT OFF CACHE BOOL)
+SET (BUILD_WSI_XLIB_SUPPORT OFF CACHE BOOL)
+SET (BUILD_WSI_WAYLAND_SUPPORT OFF CACHE BOOL)
 ADD_SUBDIRECTORY (${CMAKE_CURRENT_SOURCE_DIR}/libs/Vulkan-Headers)
 ADD_SUBDIRECTORY (${CMAKE_CURRENT_SOURCE_DIR}/libs/Vulkan-Loader)
 #FIND_PACKAGE (Vulkan REQUIRED)
