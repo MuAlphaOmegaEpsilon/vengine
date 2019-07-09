@@ -1,19 +1,23 @@
 language: cpp
-dist: xenial
-addons:
-      apt:
-        packages:
-          - mesa-vulkan-drivers
 
 matrix:
   include:
   - os: linux
-    compiler: clang    
+    dist: xenial
+    compiler: clang   
+    addons:
+      apt:
+        packages:
+          - mesa-vulkan-drivers 
 
   - os: linux
+    dist: xenial
     env: 
       - COVERAGE=true
     addons:
+      apt:
+        packages:
+          - mesa-vulkan-drivers
       sonarcloud:
         organization: "mualphaomegaepsilon-github"
 
