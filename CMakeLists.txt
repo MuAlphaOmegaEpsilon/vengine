@@ -15,20 +15,6 @@ PROJECT (vengine VERSION 1.0.0 LANGUAGES CXX DESCRIPTION "A C++17 Vulkan barebon
 
 
 ###############################################################################
-#                                DEPENDENCIES                                 #
-###############################################################################
-ADD_SUBDIRECTORY (${CMAKE_CURRENT_SOURCE_DIR}/libs/Vulkan-Headers)
-SET (VulkanHeaders_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/libs/Vulkan-Headers/include CACHE STRING "Incude DIR for Vulkan-Headers" FORCE)
-SET (BUILD_WSI_XCB_SUPPORT OFF CACHE BOOL "Don't build XCB WSI support" FORCE)
-SET (BUILD_WSI_XLIB_SUPPORT OFF CACHE BOOL "Don't build Xlib WSI support" FORCE)
-SET (BUILD_WSI_WAYLAND_SUPPORT OFF CACHE BOOL "Don't build Wayland WSI support" FORCE)
-ADD_SUBDIRECTORY (${CMAKE_CURRENT_SOURCE_DIR}/libs/Vulkan-Loader)
-#FIND_PACKAGE (Vulkan REQUIRED)
-
-
-
-
-###############################################################################
 #                                  LIBRARY                                    #
 ###############################################################################
 ADD_LIBRARY (vengine INTERFACE)
@@ -40,6 +26,7 @@ ADD_LIBRARY (vengine INTERFACE)
 #                                  HEADERS                                    #
 ###############################################################################
 TARGET_INCLUDE_DIRECTORIES (vengine INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+TARGET_INCLUDE_DIRECTORIES (vengine INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/libs/Vulkan-Header/include)
 
 
 
