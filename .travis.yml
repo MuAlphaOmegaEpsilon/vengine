@@ -1,17 +1,8 @@
 language: cpp
-git:
-  depth: false
 
 matrix:
   include:
-  - os: linux
-    dist: xenial
-    compiler: clang   
-    addons:
-      apt:
-        packages:
-          - mesa-vulkan-drivers 
-
+  
   - os: linux
     dist: xenial
     env: 
@@ -22,18 +13,30 @@ matrix:
           - mesa-vulkan-drivers
       sonarcloud:
         organization: "mualphaomegaepsilon-github"
+    before_script:
+    - git fetch --unshallow || echo "No need to unshallow"
+    - ./scripts/shellcheck.sh
+    - sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
+    after_script:
+    - sonar-scanner
+        
+  - os: linux
+    dist: xenial
+    compiler: clang   
+    addons:
+      apt:
+        packages:
+          - mesa-vulkan-drivers 
 
   - os: osx
     osx_image: xcode10.2
 
   - os: windows
+    before_install: 
+    - choco install python3
 
 script:
-- if [ -n "${COVERAGE:-}" ]; then ./scripts/shellcheck.sh; fi  
-- if [ -n "${COVERAGE:-}" ]; then sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov; fi
-- if [ "${TRAVIS_OS_NAME}" == "windows" ]; then choco install python3 -y; PY_PYTHON=3 && export PY_PYTHON; fi
 - ./tests/setup.sh
 - ./tests/build.sh
 - ./tests/run.sh
-- if [ -n "${SONAR_SCANNER_HOME:-}" ]; then sonar-scanner; fi
 - cd tests/build/ && ./test_initializeVulkan && echo $?
