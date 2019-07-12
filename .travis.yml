@@ -27,13 +27,11 @@ matrix:
     osx_image: xcode10.2
 
   - os: windows
-    filter_secrets: false
 
 script:
 - if [ -n "${COVERAGE:-}" ]; then ./scripts/shellcheck.sh; fi  
 - if [ -n "${COVERAGE:-}" ]; then sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov; fi
 - if [ "${TRAVIS_OS_NAME}" == "windows" ]; then choco install python3 -y; PY_PYTHON=3 && export PY_PYTHON; fi
-- ./scripts/installVulkan.sh
 - ./tests/setup.sh
 - ./tests/build.sh
 - ./tests/run.sh
