@@ -31,7 +31,7 @@ matrix:
 
 script:
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./scripts/shellcheck.sh; fi
-# - ./scripts/installVulkan.sh
+- ./scripts/installVulkan.sh
 - ./tests/setup.sh
 - ./tests/build.sh
 - ./tests/run.sh
