@@ -4,7 +4,7 @@ matrix:
   include:
   
   - os: linux
-    dist: xenial
+    dist: bionic
     env: 
       - COVERAGE=true
     addons:
@@ -15,13 +15,12 @@ matrix:
         organization: "mualphaomegaepsilon-github"
     before_script:
     - git fetch --unshallow || echo "No need to unshallow"
-    - ./scripts/shellcheck.sh
     - sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
     after_script:
     - sonar-scanner
         
   - os: linux
-    dist: xenial
+    dist: bionic
     compiler: clang   
     addons:
       apt:
@@ -29,12 +28,10 @@ matrix:
           - mesa-vulkan-drivers 
 
   - os: osx
-    osx_image: xcode10.2
+    osx_image: xcode11
 
 script:
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./scripts/shellcheck.sh; fi
-- if [ -n "${SONAR_SCANNER_HOME:-}" ]; then git fetch --unshallow || echo "No need to unshallow"; fi
-- if [ -n "${COVERAGE:-}" ]; then sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov; fi
 - ./scripts/installVulkan.sh
 - ./tests/setup.sh
 - ./tests/build.sh
