@@ -1,36 +1,32 @@
 language: cpp
+dist: bionic
+git:
+  depth: false
+addons:
+  apt:
+    packages:
+      - libvulkan-dev
+      - mesa-vulkan-drivers
 
 matrix:
   include:
   
   - os: linux
-    dist: bionic
-    env: 
-      # - COVERAGE=true
-      - VULKAN_BUILD_TARGET=LINUX
+    # env: COVERAGE=true
     addons:
-      apt:
-        packages:
-          - mesa-vulkan-drivers
       sonarcloud:
         organization: "mualphaomegaepsilon-github"
     before_script:
-    - git fetch --unshallow || echo "No need to unshallow"
+    # - git fetch --unshallow || echo "No need to unshallow"
     - sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
-    after_script:
+    #after_script:
     # - sonar-scanner
         
   - os: linux
     dist: bionic
     compiler: clang  
-    env: VULKAN_BUILD_TARGET=LINUX 
-    addons:
-      apt:
-        packages:
-          - mesa-vulkan-drivers 
-
+    
   - os: osx
-    env: VULKAN_BUILD_TARGET=MACOS
     osx_image: xcode11
 
 script:
