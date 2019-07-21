@@ -6,7 +6,7 @@ matrix:
   - os: linux
     dist: bionic
     env: 
-      - COVERAGE=true
+      # - COVERAGE=true
       - VULKAN_BUILD_TARGET=LINUX
     addons:
       apt:
@@ -18,7 +18,7 @@ matrix:
     - git fetch --unshallow || echo "No need to unshallow"
     - sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
     after_script:
-    - sonar-scanner
+    # - sonar-scanner
         
   - os: linux
     dist: bionic
