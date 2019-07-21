@@ -15,9 +15,9 @@ LUNARG_URL=https://sdk.lunarg.com/sdk/download/"${VULKAN_VERSION}"
 
 case "$(uname -s)" in
     Darwin) # osx
-        # wget "${LUNARG_URL}/mac/vulkansdk-macos-${VULKAN_VERSION}.tar.gz"
-        # tar xf vulkansdk-macos-"${VULKAN_VERSION}".tar.gz
-        # cd vulkansdk-macos-"${VULKAN_VERSION}" && ./install_vulkan.py
+        wget "${LUNARG_URL}/mac/vulkansdk-macos-${VULKAN_VERSION}.tar.gz"
+        tar xf vulkansdk-macos-"${VULKAN_VERSION}".tar.gz
+        cd vulkansdk-macos-"${VULKAN_VERSION}" && ./install_vulkan.py
         ;;
     Linux) # linux
         # wget "${LUNARG_URL}/linux/vulkansdk-linux-${VULKAN_VERSION}.tar.gz"
