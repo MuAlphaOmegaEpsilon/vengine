@@ -25,8 +25,8 @@ case "$(uname -s)" in
         # mv "${VULKAN_VERSION}"/ vulkan-sdk/
         ;;
     CYGWIN*|MINGW32*|MSYS*) # windows
-        curl -L --silent --show-error --output vulkan-runtime.exe "${LUNARG_URL}/windows/VulkanRT-${VULKAN_VERSION}-Installer.exe"
-        .\\vulkan-runtime.exe /S
+        # curl -L --silent --show-error --output vulkan-runtime.exe "${LUNARG_URL}/windows/VulkanRT-${VULKAN_VERSION}-Installer.exe"
+        # .\\vulkan-runtime.exe /S
         ;;
     *)
         return 1
