@@ -1,13 +1,13 @@
 language: cpp
 dist: bionic
-git:
-  depth: false
+# git:
+#   depth: false
 
 matrix:
   include:
   
   - os: linux
-    # env: COVERAGE=true
+    env: COVERAGE=true
     addons:
       apt:
         packages: libvulkan-dev mesa-vulkan-drivers vulkan-utils
@@ -15,11 +15,10 @@ matrix:
         organization: "mualphaomegaepsilon-github"
     before_script:
     - sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
-    #after_script:
-    # - sonar-scanner
+    after_script:
+    - sonar-scanner
         
   - os: linux
-    dist: bionic
     compiler: clang
     addons:
       apt:
