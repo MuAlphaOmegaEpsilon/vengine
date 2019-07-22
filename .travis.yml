@@ -10,11 +10,10 @@ matrix:
     # env: COVERAGE=true
     addons:
       apt:
-        packages: libvulkan-dev mesa-vulkan-drivers
+        packages: libvulkan-dev mesa-vulkan-drivers vulkan-utils
       sonarcloud:
         organization: "mualphaomegaepsilon-github"
     before_script:
-    # - git fetch --unshallow || echo "No need to unshallow"
     - sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
     #after_script:
     # - sonar-scanner
@@ -24,7 +23,7 @@ matrix:
     compiler: clang
     addons:
       apt:
-        packages: libvulkan-dev mesa-vulkan-drivers
+        packages: libvulkan-dev mesa-vulkan-drivers vulkan-utils
     
   - os: osx
     osx_image: xcode11
