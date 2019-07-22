@@ -20,7 +20,7 @@ PROJECT (vengine VERSION 1.0.0 LANGUAGES CXX DESCRIPTION "A C++17 Vulkan barebon
 ADD_LIBRARY (vengine INTERFACE)
 
 
-find_package(Vulkan REQUIRED)
+FIND_PACKAGE (Vulkan REQUIRED)
 
 ###############################################################################
 #                                  HEADERS                                    #
