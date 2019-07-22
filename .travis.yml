@@ -11,8 +11,8 @@ matrix:
     addons:
       apt:
         packages:
-          - libvulkan-dev
-          - mesa-vulkan-drivers
+        - libvulkan-dev
+        - mesa-vulkan-drivers
       sonarcloud:
         organization: "mualphaomegaepsilon-github"
     before_script:
@@ -27,8 +27,8 @@ matrix:
     addons:
       apt:
         packages:
-          - libvulkan-dev
-          - mesa-vulkan-drivers
+        - libvulkan-dev
+        - mesa-vulkan-drivers
     
   - os: osx
     osx_image: xcode11
