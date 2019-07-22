@@ -10,9 +10,7 @@ matrix:
     # env: COVERAGE=true
     addons:
       apt:
-        packages:
-        - libvulkan-dev
-        - mesa-vulkan-drivers
+        packages: libvulkan-dev mesa-vulkan-drivers
       sonarcloud:
         organization: "mualphaomegaepsilon-github"
     before_script:
@@ -26,9 +24,7 @@ matrix:
     compiler: clang
     addons:
       apt:
-        packages:
-        - libvulkan-dev
-        - mesa-vulkan-drivers
+        packages: libvulkan-dev mesa-vulkan-drivers
     
   - os: osx
     osx_image: xcode11
