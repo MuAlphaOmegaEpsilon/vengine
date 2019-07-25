@@ -29,7 +29,7 @@ matrix:
     install:
     - wget --no-cookies -O vulkansdk.tar.gz https://sdk.lunarg.com/sdk/download/1.1.108.0/mac/vulkansdk-macos-1.1.108.0.tar.gz?Human=true
     - tar -xzf vulkansdk.tar.gz
-    - ./vulkansdk-macos-1.1.108.0/install_vulkan.py
+    - cd vulkansdk-macos-1.1.108.0/ && ./install_vulkan.py
 
 script:
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./scripts/shellcheck.sh; fi
