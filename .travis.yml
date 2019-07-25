@@ -27,9 +27,10 @@ matrix:
   - os: osx
     osx_image: xcode10.2
     install:
-    - curl https://sdk.lunarg.com/sdk/download/1.1.108.0/mac/vulkansdk-macos-1.1.108.0.tar.gz --output vulkansdk
-    - tar xf vulkansdk
-    - ./vulkansdk/install_vulkan.py
+    - wget -O vulkansdk.tar.gz https://sdk.lunarg.com/sdk/download/1.1.108.0/mac/vulkansdk-macos-1.1.108.0.tar.gz?Human=true
+    - tar -xzf vulkansdk.tar.gz
+    - export VULKAN_SDK=$PWD/vulkansdk-macos-$VULKAN_SDK_VER
+#    - ./vulkansdk/install_vulkan.py
 
 script:
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./scripts/shellcheck.sh; fi
