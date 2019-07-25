@@ -25,7 +25,7 @@ matrix:
         packages: libvulkan-dev mesa-vulkan-drivers vulkan-utils
     
   - os: osx
-    osx_image: xcode11
+    osx_image: xcode10.2
     install:
     - curl https://sdk.lunarg.com/sdk/download/1.1.108.0/mac/vulkansdk-macos-1.1.108.0.tar.gz --output vulkansdk.tar.gz
     - tar xf vulkansdk.tar.gz
