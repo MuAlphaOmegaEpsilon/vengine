@@ -13,5 +13,6 @@
 !/LICENSE
 !/README.md
 !/sonar-project.properties
+!/.appveyor.yml
 !/.gitignore
 !/.travis.yml
