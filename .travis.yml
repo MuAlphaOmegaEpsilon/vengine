@@ -1,5 +1,8 @@
 language: cpp
 dist: xenial
+git:
+  depth: 1
+  submodules: false
 
 matrix:
   include:
@@ -31,18 +34,15 @@ matrix:
     
   - os: osx
     osx_image: xcode11
-    install:
-    - wget --no-cookies -O vulkansdk.tar.gz https://sdk.lunarg.com/sdk/download/1.1.108.0/mac/vulkansdk-macos-1.1.108.0.tar.gz?Human=true
-    - tar -xzf vulkansdk.tar.gz
-    - (cd vulkansdk-macos-1.1.108.0/ && ./install_vulkan.py)
   
   - os: windows
     env: 
     - CMAKE_ARGS="-DENABLE_STATIC_LOADER=ON"
 
 script:
+- git submodule update --init --recursive --depth 1
 - mkdir -p tests/build && cd tests/build
-- cmake .. $CMAKE_ARGS
+- cmake .. ${CMAKE_ARGS}
 - ${CMAKE_BUILD_WRAPPER} cmake --build .
 # Only test runtime under Linux, since osx is missing Metal
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ctest -j2; fi
