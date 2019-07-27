@@ -38,6 +38,7 @@ matrix:
     - CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET=10.14"
   
   - os: windows
+    compiler: cl
     install: 
     - choco install windowsdriverkit10
 
