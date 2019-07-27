@@ -16,7 +16,8 @@ install:
 - vulkan-sdk.exe /S
 
 build_script:
-- tests/setup.sh
-- tests/build.sh
-- tests/run.sh
-- tests/build/test_initializeVulkan && echo $?
+- cd tests
+- setup.sh
+- build.sh
+- run.sh
+- cd build && test_initializeVulkan && echo $?
