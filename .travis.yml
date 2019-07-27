@@ -39,7 +39,7 @@ matrix:
   
   - os: windows
     env: 
-    - CMAKE_ARGS="-DWDK_FULL_PATH=\"C:/ProgramData/chocolatey/tools\""
+    - CMAKE_ARGS="-DWDK_BASE_PATH=C:/ProgramData/chocolatey/tools"
     install: 
     - ls C:/ProgramData/chocolatey/
     - ls C:/ProgramData/chocolatey/bin
