@@ -38,6 +38,8 @@ matrix:
   - os: windows
     env: 
     - CMAKE_ARGS="-DENABLE_STATIC_LOADER=ON"
+    before_install: 
+    - choco install python3
 
 script:
 - git submodule update --init --recursive --depth 1
