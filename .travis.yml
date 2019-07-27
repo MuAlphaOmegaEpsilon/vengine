@@ -38,6 +38,9 @@ matrix:
     - CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET=10.14"
   
   - os: windows
+    install: 
+    - choco install windowsdriverkit10
+
 
 script:
 - git submodule update --init --recursive --depth 1
