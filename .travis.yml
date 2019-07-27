@@ -41,6 +41,7 @@ matrix:
     compiler: cl
     install: 
     - choco install windowsdriverkit10
+    - cat C:\ProgramData\chocolatey\logs\chocolatey.log
 
 
 script:
