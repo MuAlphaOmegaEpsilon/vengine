@@ -32,8 +32,8 @@ matrix:
     - (cd vulkansdk-macos-1.1.108.0/ && ./install_vulkan.py)
 
 script:
-- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./scripts/shellcheck.sh; fi
-- ./tests/setup.sh
-- ./tests/build.sh
-- ./tests/run.sh
-- cd tests/build/ && ./test_initializeVulkan && echo $?
+- mkdir -p tests/build && cd tests/build
+- cmake .. $CMAKE_ARGS
+- ${CMAKE_BUILD_WRAPPER} cmake --build .
+# Only test runtime under Linux, since osx is missing Metal
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ctest -j2; fi

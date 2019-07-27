@@ -3,7 +3,6 @@
 
 # ...except these folders (and eventually their content) down here...
 !/libs
-!/scripts
 !/tests
 !/.git
 
@@ -13,6 +12,5 @@
 !/LICENSE
 !/README.md
 !/sonar-project.properties
-!/.appveyor.yml
 !/.gitignore
 !/.travis.yml
