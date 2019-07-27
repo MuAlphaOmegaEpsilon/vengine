@@ -44,5 +44,6 @@ script:
 - mkdir -p tests/build && cd tests/build
 - cmake .. ${CMAKE_ARGS}
 - ${CMAKE_BUILD_WRAPPER} cmake --build .
+- cat C:/Users/travis/build/MuAlphaOmegaEpsilon/vengine/tests/build/CMakeFiles/CMakeOutput.log
 # Only test runtime under Linux, since osx is missing Metal
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ctest -j2; fi
