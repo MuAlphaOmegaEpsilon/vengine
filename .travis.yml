@@ -40,8 +40,6 @@ matrix:
     env: DCMAKE_OSX_DEPLOYMENT_TARGET="10-14"
   
   - os: windows
-    before_install: 
-    - choco install python3
 
 script:
 - git submodule update --init --recursive --depth 1
