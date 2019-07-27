@@ -39,9 +39,11 @@ matrix:
   
   - os: windows
     compiler: cl
+    env: 
+    - TARGET="Visual Studio 15 2017 Win64"
     install: 
     - choco install windowsdriverkit10
-    - cat C:\ProgramData\chocolatey\logs\chocolatey.log
+    - cat C:/ProgramData/chocolatey/logs/chocolatey.log
 
 
 script:
