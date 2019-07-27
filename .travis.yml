@@ -12,8 +12,11 @@ matrix:
     git:
       depth: false
     env: 
-    - CMAKE_ARGS="-DCOVERAGE_FLAG=--coverage -DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF"
+    - CMAKE_ARGS="-DCOVERAGE_FLAG=--coverage"
     - CMAKE_BUILD_WRAPPER="build-wrapper-linux-x86-64 --out-dir ."
+    - DBUILD_WSI_XCB_SUPPORT=OFF
+    - DBUILD_WSI_XLIB_SUPPORT=OFF
+    - DBUILD_WSI_WAYLAND_SUPPORT=OFF
     addons:
       apt:
         packages: mesa-vulkan-drivers
@@ -34,6 +37,7 @@ matrix:
     
   - os: osx
     osx_image: xcode11
+    env: DCMAKE_OSX_DEPLOYMENT_TARGET="10-14"
   
   - os: windows
     before_install: 
