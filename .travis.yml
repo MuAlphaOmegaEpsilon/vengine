@@ -44,12 +44,12 @@ matrix:
     - ls C:/ProgramData/chocolatey/
     - ls C:/ProgramData/chocolatey/bin
     - ls C:/ProgramData/chocolatey/tools
-    - ls C:/Program\ Files\ (x86)/Windows\ Kits/10
+    - ls "C:/Program Files (x86)/Windows Kits/10"
     - choco install windowsdriverkit10
     - ls C:/ProgramData/chocolatey/
     - ls C:/ProgramData/chocolatey/bin
     - ls C:/ProgramData/chocolatey/tools
-    - ls C:/Program\ Files\ (x86)/Windows\ Kits/10
+    - ls "C:/Program Files (x86)/Windows Kits/10"
 
 script:
 - git submodule update --init --recursive --depth 1
