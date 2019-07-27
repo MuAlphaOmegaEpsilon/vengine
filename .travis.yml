@@ -38,13 +38,13 @@ matrix:
     - CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET=10.14"
   
   - os: windows
-    compiler: cl
     env: 
-    - TARGET="Visual Studio 15 2017 Win64"
+    - CMAKE_ARGS="-DWDK_FULL_PATH=\"C:/ProgramData/chocolatey/tools\""
     install: 
+    - ls C:/ProgramData/chocolatey/
+    - ls C:/ProgramData/chocolatey/bin
+    - ls C:/ProgramData/chocolatey/tools
     - choco install windowsdriverkit10
-    - cat C:/ProgramData/chocolatey/logs/chocolatey.log
-
 
 script:
 - git submodule update --init --recursive --depth 1
