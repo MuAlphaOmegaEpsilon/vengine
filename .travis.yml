@@ -39,10 +39,13 @@ matrix:
   
   - os: windows
     env: 
-    - CMAKE_ARGS="-DWDK_FULL_PATH=\"C:/Program Files (x86)/Windows Kits/10/Include/10.0.17134.0\""
+    - CMAKE_ARGS="-DWDK_FULL_PATH=\"C:/Program\ Files\ (x86)/Windows\ Kits/10/Include/10.0.17134.0\""
     install: 
     #- choco install windowsdriverkit10
     - ls "C:/Program Files (x86)/Windows Kits/10/Include"
+    - ls "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10240.0"
+    - ls "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0"
+    - ls "C:/Program Files (x86)/Windows Kits/10/Include/10.0.15063.0"
     - ls "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0"
     - ls "C:/Program Files (x86)/Windows Kits/10/Include/10.0.17134.0"
 
