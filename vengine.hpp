@@ -12,19 +12,16 @@ using VkError = VkResult;
 
 namespace vengine
 {
-    constexpr VkAllocationCallbacks* allocator = nullptr;
+    extern VkInstance vulkanInstance;
+    constexpr VkAllocationCallbacks* vulkanAllocator = nullptr;
 
-    VkInstance vkInstance;
-
-    VkError initializeVulkan (const char* appName, uint32_t appVersion);
-    void destroyVulkan ();
+    inline VkError initializeVulkan (const char* appName, uint32_t appVersion);
+    inline void destroyVulkan ();
 }
 
 VkError vengine::initializeVulkan (const char* appName, uint32_t appVersion)
-{
-    using namespace vengine;
-
-    const VkApplicationInfo vkApplicationInfo = 
+{   using namespace vengine;
+    const VkApplicationInfo vulkanAppInfo = 
     {
         VkStructureType::VK_STRUCTURE_TYPE_APPLICATION_INFO,
         nullptr,
@@ -32,21 +29,20 @@ VkError vengine::initializeVulkan (const char* appName, uint32_t appVersion)
         "Vengine", VK_MAKE_VERSION (1, 0, 0),
         VK_API_VERSION_1_0
     };
-    const VkInstanceCreateInfo vkInstanceCreationInfo = 
+    const VkInstanceCreateInfo vulkanInstancingInfo = 
     {
         VkStructureType::VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
         nullptr,
         VkFlags {},
-        &vkApplicationInfo,
+        &vulkanAppInfo,
         0, nullptr,
         0, nullptr
     };
-    return vkCreateInstance (&vkInstanceCreationInfo, allocator, &vkInstance);
+    return vkCreateInstance (&vulkanInstancingInfo, vulkanAllocator, &vulkanInstance);
 }
 
 void vengine::destroyVulkan ()
-{
-    using namespace vengine;
-    vkDestroyInstance (vkInstance, allocator);
+{   using namespace vengine;
+    vkDestroyInstance (vulkanInstance, vulkanAllocator);
 }
 

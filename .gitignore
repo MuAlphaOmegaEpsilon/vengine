@@ -7,6 +7,7 @@
 !/.git
 
 # ...and except these files down here...
+!/vengine.cpp
 !/vengine.hpp
 !/CMakeLists.txt
 !/LICENSE

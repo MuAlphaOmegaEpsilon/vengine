@@ -40,6 +40,14 @@ TARGET_INCLUDE_DIRECTORIES (vengine INTERFACE ${PROJECT_SOURCE_DIR})
 
 
 ###############################################################################
+#                                  SOURCES                                    #
+###############################################################################
+TARGET_SOURCES (vengine INTERFACE ${PROJECT_SOURCE_DIR}/vengine.cpp)
+
+
+
+
+###############################################################################
 #                                LINK LIBRARIES                               #
 ###############################################################################
 TARGET_LINK_LIBRARIES (vengine INTERFACE Vulkan::Vulkan)
