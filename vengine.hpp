@@ -46,8 +46,6 @@ VkError vengine::initializeVulkan (const char* appName, uint32_t appVersion)
 
 void vengine::destroyVulkan ()
 {
-    // TODO: this could be accomplished by using std::unique_ptr custom
-    // Deleter functionality
     using namespace vengine;
     vkDestroyInstance (vkInstance, allocator);
 }
