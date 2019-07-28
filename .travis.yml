@@ -40,14 +40,14 @@ matrix:
   - os: windows
     env: 
     - WDK_FULL_PATH="C:/Program Files (x86)/Windows Kits/10/Include/10.0.17763.0"
-    - CMAKE_ARGS="-DWDK_FULL_PATH=${WDK_FULL_PATH}"
+    - CMAKE_ARGS=-DWDK_FULL_PATH="${WDK_FULL_PATH}"
     install: 
     - choco install windowsdriverkit10
 
 script:
 - git submodule update --init --recursive --depth 1
 - mkdir -p tests/build && cd tests/build
-- cmake .. "${CMAKE_ARGS}"
+- cmake .. ${CMAKE_ARGS}
 - ${CMAKE_BUILD_WRAPPER} cmake --build .
 # Only test runtime under Linux, since osx and Windows are missing drivers
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ctest -j2; fi
