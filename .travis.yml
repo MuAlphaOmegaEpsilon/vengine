@@ -48,7 +48,7 @@ script:
 - git submodule update --init --recursive --depth 1
 - mkdir -p tests/build && cd tests/build
 - cmake .. "${CMAKE_ARGS}"
-- "${CMAKE_BUILD_WRAPPER}" cmake --build .
+- ${CMAKE_BUILD_WRAPPER} cmake --build .
 - ctest
 # Only test runtime under Linux, since osx is missing Metal
 # - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ctest -j2; fi
