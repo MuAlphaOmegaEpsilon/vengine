@@ -13,7 +13,7 @@ matrix:
     git:
       depth: false
     env: 
-    - CMAKE_ARGS="-DCOVERAGE_FLAG=--coverage -DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF"
+    - CMAKE_ARGS="-DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF -DCOVERAGE_FLAG=--coverage"
     - CMAKE_BUILD_WRAPPER="build-wrapper-linux-x86-64 --out-dir ."    
     addons:
       apt:
