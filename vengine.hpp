@@ -1,12 +1,10 @@
+#pragma once
 /**
  * @brief A C++17 Vulkan barebone engine. 
  * @file vengine.hpp
  * @author Tommaso Bonvicini <tommasobonvicini@gmail.com> https://github.com/MuAlphaOmegaEpsilon/vengine
  * @date 01-07-2019
  */
-
-#ifndef VENGINE_HPP
-#define VENGINE_HPP
 
 #include <assert.h>
 #include <vulkan/vulkan.h>
@@ -55,4 +53,3 @@ void vengine::destroyVulkan ()
     vkDestroyInstance (vkInstance, allocator);
 }
 
-#endif
