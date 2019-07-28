@@ -6,7 +6,6 @@
  * @date 01-07-2019
  */
 
-#include <assert.h>
 #include <vulkan/vulkan.h>
 
 using VkError = VkResult;
