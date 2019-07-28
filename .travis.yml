@@ -1,31 +1,48 @@
 language: cpp
-
 dist: xenial
+git:
+  depth: 1
+  submodules: false
 
 matrix:
   fast_finish: true
   include:
-
-    - os: linux
-      compiler: clang  
-
-    - os: linux
-      compiler: g++
-      env: 
-        - COVERAGE=true
-      addons:
-        sonarcloud:
-          organization: "mualphaomegaepsilon-github"
-
-    - os: osx
-
-    - os: windows
+  
+  - os: linux
+    compiler: gcc  
+    git:
+      depth: false
+    env: 
+    - CMAKE_ARGS="-DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF -DCOVERAGE_FLAG=--coverage"
+    - CMAKE_BUILD_WRAPPER="build-wrapper-linux-x86-64 --out-dir ."    
+    addons:
+      apt:
+        packages: mesa-vulkan-drivers
+      sonarcloud:
+        organization: "mualphaomegaepsilon-github"
+    before_script: sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
+    after_script: sonar-scanner
+        
+  - os: linux
+    compiler: clang
+    env: CMAKE_ARGS="-DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF"
+    addons:
+      apt:
+        packages: mesa-vulkan-drivers
+    
+  - os: osx
+    osx_image: xcode11
+  
+  - os: windows
+    env: CMAKE_ARGS="-DWDK_FULL_PATH=$HOME/WDK_DIR"
+    install: 
+    - choco install windowsdriverkit10
+    - ln -s "C:/Program Files (x86)/Windows Kits/10/Include/10.0.17763.0" $HOME/WDK_DIR
 
 script:
-  - if [ -n "${SONAR_SCANNER_HOME:-}" ]; then git fetch --unshallow || echo "No need to unshallow"; fi
-  - if [ -n "${COVERAGE:-}" ]; then ./tests/shellcheck.sh; fi
-  - if [ -n "${COVERAGE:-}" ]; then sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov; fi
-  - ./tests/setup.sh
-  - ./tests/build.sh
-  - ./tests/run.sh
-  - if [ -n "${SONAR_SCANNER_HOME:-}" ]; then sonar-scanner; fi
+- git submodule update --init --recursive --depth 1
+- mkdir -p tests/build && cd tests/build
+- cmake .. ${CMAKE_ARGS}
+- ${CMAKE_BUILD_WRAPPER} cmake --build .
+# Only test runtime under Linux, since osx and Windows are missing drivers
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ctest -j2; fi

@@ -1,0 +1,6 @@
+[submodule "libs/Vulkan-Loader"]
+	path = libs/Vulkan-Loader
+	url = https://github.com/MuAlphaOmegaEpsilon/Vulkan-Loader
+[submodule "libs/Vulkan-Headers"]
+	path = libs/Vulkan-Headers
+	url = https://github.com/KhronosGroup/Vulkan-Headers

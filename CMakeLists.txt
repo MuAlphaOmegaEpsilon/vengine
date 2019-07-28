@@ -17,7 +17,8 @@ PROJECT (vengine VERSION 1.0.0 LANGUAGES CXX DESCRIPTION "A C++17 Vulkan barebon
 ###############################################################################
 #                                DEPENDENCIES                                 #
 ###############################################################################
-FIND_PACKAGE (Vulkan REQUIRED)
+ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Headers)
+ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Loader)
 
 
 
@@ -33,7 +34,7 @@ ADD_LIBRARY (vengine INTERFACE)
 ###############################################################################
 #                                  HEADERS                                    #
 ###############################################################################
-TARGET_INCLUDE_DIRECTORIES (vengine INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+TARGET_INCLUDE_DIRECTORIES (vengine INTERFACE ${PROJECT_SOURCE_DIR})
 
 
 
