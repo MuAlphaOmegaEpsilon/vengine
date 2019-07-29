@@ -1,5 +1,7 @@
-struct VkInstance_T;
-using VkInstance = VkInstance_T*;
+// This macro is similar to the one found in vulkan_core.h
+#define VK_DEFINE_HANDLE(object) struct object##_T; using object = object##_T*;
+
+VK_DEFINE_HANDLE(VkInstance)
 
 namespace vengine 
 {
