@@ -2,8 +2,10 @@
 #define VK_DEFINE_HANDLE(object) struct object##_T; using object = object##_T*;
 
 VK_DEFINE_HANDLE(VkInstance)
+VK_DEFINE_HANDLE(VkPhysicalDevice)
 
 namespace vengine 
 {
     VkInstance vulkanInstance = nullptr;
+    VkPhysicalDevice vulkanPhysicalDevice = nullptr;
 }
