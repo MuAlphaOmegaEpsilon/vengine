@@ -1,8 +1,7 @@
 language: cpp
 dist: xenial
 git:
-  depth: 1
-  submodules: false
+  depth: false
 
 matrix:
   fast_finish: true
@@ -10,8 +9,6 @@ matrix:
   
   - os: linux
     compiler: gcc  
-    git:
-      depth: false
     env: 
     - CMAKE_ARGS="-DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF -DCOVERAGE_FLAG=--coverage"
     - CMAKE_BUILD_WRAPPER="build-wrapper-linux-x86-64 --out-dir ."    
@@ -40,7 +37,6 @@ matrix:
     - ln -s "C:/Program Files (x86)/Windows Kits/10/Include/10.0.17763.0" $HOME/WDK_DIR
 
 script:
-- git submodule update --init --recursive --depth 1
 - mkdir -p tests/build && cd tests/build
 - cmake .. ${CMAKE_ARGS}
 - ${CMAKE_BUILD_WRAPPER} cmake --build .
