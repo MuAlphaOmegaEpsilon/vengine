@@ -11,15 +11,17 @@
 using VkError = VkResult;
 
 #define ND [[nodiscard]]
+#define C extern "C"
 namespace vengine
 {
     extern VkInstance vulkanInstance;
     extern VkPhysicalDevice vulkanPhysicalDevice;
     constexpr VkAllocationCallbacks* vulkanAllocator = nullptr;
 
-    ND inline VkError initializeVulkan (const char* appName, uint32_t appVersion);
-    inline void destroyVulkan ();
+    C ND inline VkError initializeVulkan (const char* appName, uint32_t appVersion);
+    C inline void destroyVulkan ();
 }
+#undef C
 #undef ND
 
 VkError vengine::initializeVulkan (const char* appName, uint32_t appVersion)
