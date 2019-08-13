@@ -13,22 +13,24 @@ using VkError = VkResult;
 #define INL inline
 #define ND [[nodiscard]]
 #define C extern "C"
-namespace vengine
-{
-    extern VkInstance vulkanInstance;
-    extern VkPhysicalDevice vulkanPhysicalDevice;
-    constexpr VkAllocationCallbacks* vulkanAllocator = nullptr;
 
-    C ND inline VkError initializeVulkan (const char* appName, uint32_t appVersion);
-    C inline void destroyVulkan ();
+namespace vengine::vulkan
+{
+    extern VkInstance instance;
+    extern VkPhysicalDevice physicalDevice;
+    constexpr VkAllocationCallbacks* allocator = nullptr;
+
+    C ND INL VkError initialize (const char* appName, uint32_t appVersion);
+    C INL void destroy ();
+    C ND INL VkError pickPhysicalDevice ();
 }
 #undef C
 #undef ND
 #undef INL
 
-VkError vengine::initializeVulkan (const char* appName, uint32_t appVersion)
-{   using namespace vengine;
-    const VkApplicationInfo vulkanAppInfo = 
+VkError vengine::vulkan::initialize (const char* appName, uint32_t appVersion)
+{   using namespace vengine::vulkan;
+    const VkApplicationInfo appInfo = 
     {
         VkStructureType::VK_STRUCTURE_TYPE_APPLICATION_INFO,
         nullptr,
@@ -36,20 +38,20 @@ VkError vengine::initializeVulkan (const char* appName, uint32_t appVersion)
         "Vengine", VK_MAKE_VERSION (1, 0, 0),
         VK_API_VERSION_1_0
     };
-    const VkInstanceCreateInfo vulkanInstancingInfo = 
+    const VkInstanceCreateInfo instancingInfo = 
     {
         VkStructureType::VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
         nullptr,
         VkFlags {},
-        &vulkanAppInfo,
+        &appInfo,
         0, nullptr,
         0, nullptr
     };
-    return vkCreateInstance (&vulkanInstancingInfo, vulkanAllocator, &vulkanInstance);
+    return vkCreateInstance (&instancingInfo, allocator, &instance);
 }
 
-void vengine::destroyVulkan ()
-{   using namespace vengine;
-    vkDestroyInstance (vulkanInstance, vulkanAllocator);
+void vengine::vulkan::destroy ()
+{   using namespace vengine::vulkan;
+    vkDestroyInstance (instance, allocator);
 }
 

@@ -2,9 +2,9 @@
 
 int main ()
 {
-    const VkError error = vengine::initializeVulkan("TEST APP", VK_MAKE_VERSION(1, 0, 0));
+    const VkError error = vengine::vulkan::initialize("TEST APP", VK_MAKE_VERSION(1, 0, 0));
     if (error)
         return error;
-    vengine::destroyVulkan();
+    vengine::vulkan::destroy();
     return 0;
 }
