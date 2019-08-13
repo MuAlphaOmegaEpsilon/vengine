@@ -10,6 +10,7 @@
 
 using VkError = VkResult;
 
+#define INL inline
 #define ND [[nodiscard]]
 #define C extern "C"
 namespace vengine
@@ -23,6 +24,7 @@ namespace vengine
 }
 #undef C
 #undef ND
+#undef INL
 
 VkError vengine::initializeVulkan (const char* appName, uint32_t appVersion)
 {   using namespace vengine;
