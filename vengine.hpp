@@ -13,7 +13,6 @@ using VkError = VkResult;
 #define INL inline
 #define ND [[nodiscard]]
 
-{
 extern "C" namespace vengine::vulkan
 {
     VkInstance instance;
