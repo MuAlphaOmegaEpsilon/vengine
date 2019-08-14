@@ -12,19 +12,18 @@ using VkError = VkResult;
 
 #define INL inline
 #define ND [[nodiscard]]
-#define C extern "C"
 
-namespace vengine::vulkan
 {
-    extern VkInstance instance;
-    extern VkPhysicalDevice physicalDevice;
+extern "C" namespace vengine::vulkan
+{
+    VkInstance instance;
+    VkPhysicalDevice physicalDevice;
     constexpr VkAllocationCallbacks* allocator = nullptr;
 
-    C ND INL VkError initialize (const char* appName, uint32_t appVersion);
-    C INL void destroy ();
-    C ND INL VkError pickPhysicalDevice ();
+    ND INL VkError initialize (const char* appName, uint32_t appVersion);
+    ND INL VkError pickPhysicalDevice (); 
+    INL void destroy ();
 }
-#undef C
 #undef ND
 #undef INL
 

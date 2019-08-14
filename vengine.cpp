@@ -4,8 +4,6 @@
 VK_DEFINE_HANDLE(VkInstance)
 VK_DEFINE_HANDLE(VkPhysicalDevice)
 
-namespace vengine::vulkan
-{
-    VkInstance instance = nullptr;
-    VkPhysicalDevice physicalDevice = nullptr;
-}
+VkInstance instance = nullptr;
+VkPhysicalDevice physicalDevice = nullptr;
+
