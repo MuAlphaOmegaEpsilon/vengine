@@ -8,6 +8,7 @@
  * @date 01-07-2019
  */
 
+#define VK_NO_STDINT_H // #include <stdint.h> is inside api.hpp
 #include <vulkan/vulkan.h>
 #include <vengine/api.hpp>
 

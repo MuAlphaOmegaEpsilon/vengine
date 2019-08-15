@@ -33,6 +33,7 @@ namespace vengine::vulkan
 // This section can be elided from the inclusion by a simple 
 // #define VENGINE_ELIDE_API_FUNCTIONS before the #include <vengine/api.hpp>
 #ifndef VENGINE_ELIDE_API_FUNCTIONS
+#include <stdint.h>
 using VkError = VkResult;
 extern "C" namespace vengine::vulkan
 {
