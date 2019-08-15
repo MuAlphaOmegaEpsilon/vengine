@@ -10,9 +10,9 @@
 using VkError = VkResult;
 
 // Forward declarations for some types
-#define VK_DEFINE_HANDLE(name) struct name##_T; using name = name##_T*
-VK_DEFINE_HANDLE (VkInstance);
-VK_DEFINE_HANDLE (VkPhysicalDevice);
+#define DEFINE_VK_HANDLE(name) struct name##_T; using name = name##_T*
+DEFINE_VK_HANDLE (VkInstance);
+DEFINE_VK_HANDLE (VkPhysicalDevice);
 
 // Shorteners MACROS
 #define INL inline
@@ -45,3 +45,4 @@ extern "C" namespace vengine::vulkan
 
 #undef ND
 #undef INL
+#undef DEFINE_VK_HANDLE
