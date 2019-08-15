@@ -13,6 +13,7 @@ using VkError = VkResult;
 #define DEFINE_VK_HANDLE(name) struct name##_T; using name = name##_T*
 DEFINE_VK_HANDLE (VkInstance);
 DEFINE_VK_HANDLE (VkPhysicalDevice);
+struct VkAllocationCallbacks;
 
 // Shorteners MACROS
 #define INL inline
