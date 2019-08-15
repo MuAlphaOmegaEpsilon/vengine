@@ -9,7 +9,7 @@
  * @date 15-08-2019
  */
 
-#define VENGINE_VENGINE_ELIDE_API_FUNCTIONS
+#define VENGINE_ELIDE_API_FUNCTIONS
 #include <vengine/api.hpp>
 
 VkInstance vengine::vulkan::instance = nullptr;
