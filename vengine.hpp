@@ -1,32 +1,15 @@
 #pragma once
 /**
- * @brief A C++17 Vulkan barebone engine. 
+ * @brief Vengine, a C++17 Vulkan barebone engine.
+ * The main header file to include to use the Vengine library,
  * @file vengine.hpp
- * @author Tommaso Bonvicini <tommasobonvicini@gmail.com> https://github.com/MuAlphaOmegaEpsilon/vengine
+ * @author Tommaso Bonvicini <tommasobonvicini@gmail.com>
+ *         https://github.com/MuAlphaOmegaEpsilon/vengine
  * @date 01-07-2019
  */
 
 #include <vulkan/vulkan.h>
-
-using VkError = VkResult;
-
-#define INL inline
-#define ND [[nodiscard]]
-#define C extern "C"
-
-namespace vengine::vulkan
-{
-    C VkInstance instance;
-    C VkPhysicalDevice physicalDevice;
-    constexpr VkAllocationCallbacks* allocator = nullptr;
-
-    C ND INL VkError initialize (const char* appName, uint32_t appVersion);
-    C INL void destroy ();
-    C ND INL VkError pickPhysicalDevice ();
-}
-#undef C
-#undef ND
-#undef INL
+#include <vengine/api.hpp>
 
 VkError vengine::vulkan::initialize (const char* appName, uint32_t appVersion)
 {   using namespace vengine::vulkan;

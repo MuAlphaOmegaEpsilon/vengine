@@ -1,14 +1,15 @@
-// This macro is similar to the one found in vulkan_core.h
-#define VK_DEFINE_HANDLE(object) struct object##_T; using object = object##_T*;
+/**
+ * @brief Definitions for all the variables declared with external linkage.
+ * Please do not #include this file, otherwise the
+ * ODR (One Definition Rule) will be broken.
+ * @file vengine.cpp
+ * @author Tommaso Bonvicini <tommasobonvicini@gmail.com>
+ *         https://github.com/MuAlphaOmegaEpsilon/vengine
+ * @date 15-08-2019
+ */
 
-VK_DEFINE_HANDLE(VkInstance)
-VK_DEFINE_HANDLE(VkPhysicalDevice)
-
-namespace vengine::vulkan
-{
-    extern "C" VkInstance instance;
-    extern "C" VkPhysicalDevice physicalDevice;
-}
+#define VENGINE_ELIDE_API_FUNCTIONS
+#include <vengine/api.hpp>
 
 VkInstance vengine::vulkan::instance = nullptr;
 VkPhysicalDevice vengine::vulkan::physicalDevice = nullptr;
