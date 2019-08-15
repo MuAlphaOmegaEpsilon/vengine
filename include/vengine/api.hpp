@@ -1,0 +1,47 @@
+#pragma once
+/**
+ * @brief The public API to use to directly interact with Vengine.
+ * @file api.hpp
+ * @author Tommaso Bonvicini <tommasobonvicini@gmail.com>
+ *         https://github.com/MuAlphaOmegaEpsilon/vengine
+ * @date 15-08-2019
+ */
+
+using VkError = VkResult;
+
+// Forward declarations for some types
+#define VK_DEFINE_HANDLE(name) struct name##_T; using name = name##_T*
+VK_DEFINE_HANDLE (VkInstance);
+VK_DEFINE_HANDLE (VkPhysicalDevice);
+
+// Shorteners MACROS
+#define INL inline
+#define ND [[nodiscard]]
+
+
+// This section can be elided from the inclusion by a simple
+// #define VENGINE_ELIDE_API_VARIABLES before the #include <vengine/api.hpp>
+#ifndef VENGINE_ELIDE_API_VARIABLES
+namespace vengine::vulkan
+{
+    extern "C" VkInstance instance;
+    extern "C" VkPhysicalDevice physicalDevice;
+    constexpr VkAllocationCallbacks* allocator = nullptr;
+}
+#endif
+
+
+// This section can be elided from the inclusion by a simple 
+// #define VENGINE_ELIDE_API_FUNCTIONS before the #include <vengine/api.hpp>
+#ifndef VENGINE_ELIDE_API_FUNCTIONS
+extern "C" namespace vengine::vulkan
+{
+    ND INL VkError initialize (const char* appName, uint32_t appVersion);
+    ND INL VkError pickPhysicalDevice ();
+    INL void destroy ();
+}
+#endif
+
+
+#undef ND
+#undef INL
