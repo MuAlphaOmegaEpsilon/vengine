@@ -1,8 +1,10 @@
 #pragma once
 /**
- * @brief A C++17 Vulkan barebone engine. 
+ * @brief Vengine, a C++17 Vulkan barebone engine.
+ * The main header file to include to use the Vengine library,
  * @file vengine.hpp
- * @author Tommaso Bonvicini <tommasobonvicini@gmail.com> https://github.com/MuAlphaOmegaEpsilon/vengine
+ * @author Tommaso Bonvicini <tommasobonvicini@gmail.com>
+ *         https://github.com/MuAlphaOmegaEpsilon/vengine
  * @date 01-07-2019
  */
 
