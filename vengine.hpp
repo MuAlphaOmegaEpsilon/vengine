@@ -16,8 +16,8 @@ using VkError = VkResult;
 
 namespace vengine::vulkan
 {
-    extern VkInstance instance;
-    extern VkPhysicalDevice physicalDevice;
+    C VkInstance instance;
+    C VkPhysicalDevice physicalDevice;
     constexpr VkAllocationCallbacks* allocator = nullptr;
 
     C ND INL VkError initialize (const char* appName, uint32_t appVersion);
