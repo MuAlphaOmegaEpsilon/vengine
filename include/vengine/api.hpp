@@ -7,8 +7,6 @@
  * @date 15-08-2019
  */
 
-using VkError = VkResult;
-
 // Forward declarations for some types
 #define DEFINE_VK_HANDLE(name) struct name##_T; using name = name##_T*
 DEFINE_VK_HANDLE (VkInstance);
@@ -35,6 +33,7 @@ namespace vengine::vulkan
 // This section can be elided from the inclusion by a simple 
 // #define VENGINE_ELIDE_API_FUNCTIONS before the #include <vengine/api.hpp>
 #ifndef VENGINE_ELIDE_API_FUNCTIONS
+using VkError = VkResult;
 extern "C" namespace vengine::vulkan
 {
     ND INL VkError initialize (const char* appName, uint32_t appVersion);
