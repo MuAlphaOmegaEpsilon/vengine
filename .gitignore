@@ -2,6 +2,7 @@
 /*
 
 # ...except these folders (and eventually their content) down here...
+!/include
 !/libs
 !/tests
 !/.git

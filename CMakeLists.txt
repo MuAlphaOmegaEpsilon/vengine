@@ -35,6 +35,7 @@ ADD_LIBRARY (vengine INTERFACE)
 #                                  HEADERS                                    #
 ###############################################################################
 TARGET_INCLUDE_DIRECTORIES (vengine INTERFACE ${PROJECT_SOURCE_DIR})
+TARGET_INCLUDE_DIRECTORIES (vengine INTERFACE ${PROJECT_SOURCE_DIR}/include)
 
 
 
