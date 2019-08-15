@@ -1,4 +1,3 @@
-#pragma once
 /**
  * @brief Definitions for all the variables declared with external linkage.
  * Please do not #include this file, otherwise the
