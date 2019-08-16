@@ -11,8 +11,8 @@
 #include <vulkan/vulkan.h>
 #include <vengine/api.hpp>
 
-VkError vengine::vulkan::initialize (const char* appName, uint32_t appVersion)
-{   using namespace vengine::vulkan;
+VkError VE_VK::initialize (const char* appName, ui32 appVersion) NX
+{   using namespace VE_VK;
     const VkApplicationInfo appInfo = 
     {
         VkStructureType::VK_STRUCTURE_TYPE_APPLICATION_INFO,
@@ -33,8 +33,8 @@ VkError vengine::vulkan::initialize (const char* appName, uint32_t appVersion)
     return vkCreateInstance (&instancingInfo, allocator, &instance);
 }
 
-void vengine::vulkan::destroy ()
-{   using namespace vengine::vulkan;
+void VE_VK::destroy () NX
+{   using namespace VE_VK;
     vkDestroyInstance (instance, allocator);
 }
 
