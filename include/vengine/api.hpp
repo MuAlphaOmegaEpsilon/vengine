@@ -40,7 +40,16 @@ using i16 = int16_t;
 using i32 = int32_t;
 using i64 = int64_t;
 
+extern "C" enum VkResult_fwdecl : i32;
+#ifndef VULKAN_H_
+using VkError = VkResult_fwdecl;
+#else
+static_assert (sizeof (VkResult_fwdecl) == sizeof (VkResult),
+               "VkError doesn't alias correctly VkResult since sizes don't \
+               match.");
 using VkError = VkResult;
+#endif
+
 extern "C" namespace vengine::vulkan
 {
     ND INL VkError initialize (const char* appName, uint32_t appVersion);
