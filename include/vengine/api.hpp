@@ -7,16 +7,12 @@
  * @date 15-08-2019
  */
 
+#include <vengine/MACROS_DEFS.hpp>
+
 // Forward declarations for some types
-#define DEFINE_VK_HANDLE(name) struct name##_T; using name = name##_T*
 DEFINE_VK_HANDLE (VkInstance);
 DEFINE_VK_HANDLE (VkPhysicalDevice);
 struct VkAllocationCallbacks;
-
-// Shorteners MACROS
-#define INL inline
-#define ND [[nodiscard]]
-
 
 // This section can be elided from the inclusion by a simple
 // #define VENGINE_ELIDE_API_VARIABLES before the #include <vengine/api.hpp>
@@ -43,7 +39,4 @@ extern "C" namespace vengine::vulkan
 }
 #endif
 
-
-#undef ND
-#undef INL
-#undef DEFINE_VK_HANDLE
+#include <vengine/MACROS_UNDEFS.hpp>
