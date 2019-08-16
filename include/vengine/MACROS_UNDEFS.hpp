@@ -1,5 +1,5 @@
 // Declaration shorteners
-#undef COMPARE_FN
+#undef COMP_FN
 #undef undef_VK_HANDLE
 
 // Namespace names shorteners
