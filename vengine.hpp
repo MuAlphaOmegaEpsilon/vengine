@@ -12,6 +12,8 @@
 
 #include <vengine/api.hpp>       // Vengine declarations
 
+#include <vengine/MACROS_DEFS.hpp>
+
 VkError VE_VK::initialize (const char* appName, ui32 appVersion) NX
 {   using namespace VE_VK;
     const VkApplicationInfo appInfo = 
@@ -39,3 +41,4 @@ void VE_VK::destroy () NX
     vkDestroyInstance (instance, allocator);
 }
 
+#include <vengine/MACROS_UNDEFS.hpp>
