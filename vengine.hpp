@@ -9,6 +9,7 @@
  */
 
 #include <vulkan/vulkan.h>       // Vulkan header
+static_assert (!VkResult::VK_SUCCESS, "VK_SUCCESS==0 assumption is invalid.");
 
 #include <vengine/api.hpp>       // Vengine declarations
 
