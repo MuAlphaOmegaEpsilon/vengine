@@ -1,7 +1,8 @@
 #pragma once
 /**
  * @brief Vengine, a C++17 Vulkan barebone engine.
- * The main header file to include to use the Vengine library,
+ * The main header file to include to use the Vengine library.
+ * Here can be found definitions for functions declared in vengine/api.hpp.
  * @file vengine.hpp
  * @author Tommaso Bonvicini <tommasobonvicini@gmail.com>
  *         https://github.com/MuAlphaOmegaEpsilon/vengine
