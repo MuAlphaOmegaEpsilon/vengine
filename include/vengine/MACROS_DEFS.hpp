@@ -1,4 +1,4 @@
-// Code shorteners
+// Code shorteners (never undef)
 #ifndef RET_ERR
 #define RET_ERR(fnCall) if (const VkError e = fnCall; e) return e
 #endif
