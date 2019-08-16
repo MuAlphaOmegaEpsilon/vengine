@@ -8,11 +8,15 @@
  * @date 01-07-2019
  */
 
-#include <vulkan/vulkan.h>
-#include <vengine/api.hpp>
+#include <vulkan/vulkan.h>       // Vulkan header
+static_assert (!VkResult::VK_SUCCESS, "VK_SUCCESS==0 assumption is invalid.");
 
-VkError vengine::vulkan::initialize (const char* appName, uint32_t appVersion)
-{   using namespace vengine::vulkan;
+#include <vengine/api.hpp>       // Vengine declarations
+
+#include <vengine/MACROS_DEFS.hpp>
+
+VkError VE_VK::initialize (const char* appName, ui32 appVersion) NX
+{   using namespace VE_VK;
     const VkApplicationInfo appInfo = 
     {
         VkStructureType::VK_STRUCTURE_TYPE_APPLICATION_INFO,
@@ -33,8 +37,9 @@ VkError vengine::vulkan::initialize (const char* appName, uint32_t appVersion)
     return vkCreateInstance (&instancingInfo, allocator, &instance);
 }
 
-void vengine::vulkan::destroy ()
-{   using namespace vengine::vulkan;
+void VE_VK::destroy () NX
+{   using namespace VE_VK;
     vkDestroyInstance (instance, allocator);
 }
 
+#include <vengine/MACROS_UNDEFS.hpp>
