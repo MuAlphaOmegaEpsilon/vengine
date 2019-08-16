@@ -52,9 +52,9 @@ using VkError = VkResult;
 
 extern "C" namespace vengine::vulkan
 {
-    ND INL VkError initialize (const char* appName, uint32_t appVersion);
-    ND INL VkError pickPhysicalDevice ();
-    INL void destroy ();
+    ND INL VkError initialize (const char* appName, ui32 appVersion) NX;
+    ND INL VkError pickPhysicalDevice () NX;
+    INL void destroy () NX;
 }
 #endif
 
