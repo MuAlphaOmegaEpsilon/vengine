@@ -8,8 +8,9 @@
  * @date 01-07-2019
  */
 
-#include <vulkan/vulkan.h>
-#include <vengine/api.hpp>
+#include <vulkan/vulkan.h>       // Vulkan header
+
+#include <vengine/api.hpp>       // Vengine declarations
 
 VkError VE_VK::initialize (const char* appName, ui32 appVersion) NX
 {   using namespace VE_VK;
