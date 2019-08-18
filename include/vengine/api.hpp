@@ -49,6 +49,7 @@ static_assert (sizeof (VkResult_fwdecl) == sizeof (VkResult),
                match.");
 using VkError = VkResult;
 #endif
+template <class T> using compare = bool (*)(const T, const T);
 
 extern "C" namespace vengine::vulkan
 {
