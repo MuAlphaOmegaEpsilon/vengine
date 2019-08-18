@@ -4,7 +4,6 @@
 #endif
 
 // Declaration shorteners
-#define COMP_FN(type) bool (*comp)(const type, const type)
 #define DEFINE_VK_HANDLE(name) struct name##_T; using name = name##_T*
 
 // Namespace names shorteners
