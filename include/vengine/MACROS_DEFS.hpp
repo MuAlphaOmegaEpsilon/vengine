@@ -1,6 +1,6 @@
 // Code shorteners (never undef)
-#ifndef RET_ERR
-#define RET_ERR(fnCall) if (const VkError e = fnCall; e) return e
+#ifndef RET_ON_ERR
+#define RET_ON_ERR(fnCall) if (const VkError e = fnCall; e) return e
 #endif
 
 // Declaration shorteners

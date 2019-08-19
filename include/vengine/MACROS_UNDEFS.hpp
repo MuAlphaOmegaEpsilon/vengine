@@ -1,5 +1,5 @@
 // Declaration shorteners
-#undef undef_VK_HANDLE
+#undef DEFINE_VK_HANDLE
 
 // Namespace names shorteners
 #undef VE
