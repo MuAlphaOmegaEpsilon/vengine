@@ -4,3 +4,6 @@
 [submodule "libs/Vulkan-Headers"]
 	path = libs/Vulkan-Headers
 	url = https://github.com/KhronosGroup/Vulkan-Headers
+[submodule "libs/wdk-10"]
+	path = libs/wdk-10
+	url = https://github.com/MuAlphaOmegaEpsilon/wdk-10
