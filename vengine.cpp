@@ -8,8 +8,7 @@
  * @date 15-08-2019
  */
 
-#define VENGINE_ELIDE_API_FUNCTIONS
-#include <vengine/api.hpp>
+#include <vengine/vulkan/fwdecl_variables.hpp>
 
 VkInstance vengine::vulkan::instance = nullptr;
 VkPhysicalDevice vengine::vulkan::physicalDevice = nullptr;
