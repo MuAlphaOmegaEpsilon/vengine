@@ -31,10 +31,7 @@ matrix:
     osx_image: xcode11
   
   - os: windows
-    env: CMAKE_ARGS="-DWDK_FULL_PATH=$HOME/WDK_DIR"
-    install: 
-    - choco install windowsdriverkit10
-    - ln -s "C:/Program Files (x86)/Windows Kits/10/Include/10.0.17763.0" $HOME/WDK_DIR
+    env: CMAKE_ARGS="-DWDK_FULL_PATH=C:/Users/travis/build/MuAlphaOmegaEpsilon/vengine/libs/wdk-10"
 
 script:
 - mkdir -p tests/build && cd tests/build
