@@ -69,7 +69,7 @@ extern "C" namespace vengine::vulkan
     ND INL VkError getPhysicalDeviceGroups
                         (ui32& count,
                          VkPhysicalDeviceGroupProperties& properties,
-                         VkInstance instance = vengine::vulkan::instance) NX;
+                         VkInstance inst = instance) NX;
     ND INL VkError getPhysicalDeviceLayerProperties
                         (ui32& count,
                          VkLayerProperties& properties,
