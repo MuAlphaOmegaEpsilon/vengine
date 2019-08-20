@@ -9,14 +9,31 @@
  * @date 01-07-2019
  */
 
-#include <vulkan/vulkan.h>       // Vulkan header
+#include <vulkan/vulkan.h>                     // Vulkan header
+#include <vengine/vulkan/fwdecl_functions.hpp> // Public Vengine API
+#include <vengine/vulkan/helper.hpp>           // Helper functions
+#include <algorithm>
+
+// Namespace names shorteners
+#define VE_VK vengine::vulkan
+// Specifiers shorteners
+#define INL inline
+#define NX noexcept
+#define ND [[nodiscard]]
+
+// Throughout the code base vulkan errors are checked with `if(error)`
+// assuming that a non-error condition is equal to zero.
 static_assert (!VkResult::VK_SUCCESS, "VK_SUCCESS==0 assumption is invalid.");
 
-#include <vengine/api.hpp>       // Vengine declarations
+void VE_VK::destroy () NX
+{   using namespace VE_VK;
+    vkDestroyInstance (instance, allocator);
+}
 
-#include <vengine/MACROS_DEFS.hpp>
 
-VkError VE_VK::initialize (const char* appName, ui32 appVersion) NX
+VkError VE_VK::initialize
+                (const char* appName,
+                 ui32 appVersion) NX
 {   using namespace VE_VK;
     const VkApplicationInfo appInfo = 
     {
@@ -38,9 +55,15 @@ VkError VE_VK::initialize (const char* appName, ui32 appVersion) NX
     return vkCreateInstance (&instancingInfo, allocator, &instance);
 }
 
-void VE_VK::destroy () NX
+VkError VE_VK::getPhysicalDevices
+                (ui32& count,
+                 VkPhysicalDevice*& devices) NX
 {   using namespace VE_VK;
-    vkDestroyInstance (instance, allocator);
+    return autoEnumerate (vkEnumeratePhysicalDevices,
+                          devices, instance, &count);
 }
 
-#include <vengine/MACROS_UNDEFS.hpp>
+#undef VE_VK
+#undef INL
+#undef NX
+#undef ND
