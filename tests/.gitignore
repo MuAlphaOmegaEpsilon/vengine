@@ -3,5 +3,7 @@
 
 # ...except these files down here...
 !/CMakeLists.txt
-!/test_initializeVulkan.cpp
+!/01_initializeVulkan.cpp
+!/02_getPhysicalDevices.cpp
+!/03_pickPhysicalDevice.cpp
 !/.gitignore
