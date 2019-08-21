@@ -72,10 +72,10 @@ VkError VE_VK::initialize
 
 VkError VE_VK::getPhysicalDevices
                 (ui32& count,
-                 VkPhysicalDevice*& devices) NX
+                 std::unique_ptr<VkPhysicalDevice []>& devices) NX
 {   using namespace VE_VK;
     return autoEnumerate (vkEnumeratePhysicalDevices,
-                          devices, instance, &count);
+                          count, devices, instance);
 }
 
 #undef VE_VK
