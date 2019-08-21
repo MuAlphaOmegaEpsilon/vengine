@@ -51,6 +51,8 @@ extern "C" namespace vengine::vulkan
     ND INL bool defaultCompare
                         (const VkPhysicalDevice& a,
                          const VkPhysicalDevice& b) NX;
+    ND INL bool isSuitable
+                        (const VkPhysicalDevice&) NX;
     INL void destroy () NX;
     ND INL VkError getInstanceExtensionProperties
                         (ui32& count,
