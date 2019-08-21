@@ -53,6 +53,10 @@ extern "C" namespace vengine::vulkan
                          const VkPhysicalDevice& b) NX;
     ND INL bool isSuitable
                         (const VkPhysicalDevice&) NX;
+}
+
+extern "C" namespace vengine::vulkan
+{
     INL void destroy () NX;
     ND INL VkError getInstanceExtensionProperties
                         (ui32& count,
