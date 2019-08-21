@@ -9,6 +9,8 @@
  */
 
 #include <vengine/vulkan/fwdecl_variables.hpp> // Needs fwd declared variables
+#include <memory>
+template <class T> using uptr = std::unique_ptr <T>;
 #include <stdint.h>
 using ui8 = uint8_t;
 using ui16 = uint16_t;
@@ -60,34 +62,35 @@ extern "C" namespace vengine::vulkan
     INL void destroy () NX;
     ND INL VkError getInstanceExtensionProperties
                         (ui32& count,
-                         VkExtensionProperties& properties,
+                         uptr<VkExtensionProperties []>& properties,
                          const char* extensionLayer) NX;
     ND INL VkError getInstanceLayerProperties
                         (ui32& count,
-                         VkLayerProperties& properties) NX;
+                         uptr<VkLayerProperties []>& properties) NX;
     ND INL VkError getInstanceVersion
                         (ui32& vulkanApiVersion) NX;
     ND INL VkError getPhysicalDeviceExtensionProperties
                         (ui32& count,
-                         VkExtensionProperties& properties,
+                         uptr<VkExtensionProperties []>& properties,
                          const char* extensionLayer,
                          VkPhysicalDevice device = physicalDevice) NX;
     ND INL VkError getPhysicalDeviceGroups
                         (ui32& count,
-                         VkPhysicalDeviceGroupProperties& properties,
+                         uptr<VkPhysicalDeviceGroupProperties []>& properties,
                          VkInstance inst = instance) NX;
     ND INL VkError getPhysicalDeviceLayerProperties
                         (ui32& count,
-                         VkLayerProperties& properties,
+                         uptr<VkLayerProperties []>& properties,
                          VkPhysicalDevice device = physicalDevice) NX;
     ND INL VkError getPhysicalDevices
                         (ui32& count,
-                         VkPhysicalDevice*& devices) NX;
+                         uptr<VkPhysicalDevice []>& devices) NX;
     ND INL VkError initialize
                         (const char* appName,
                          ui32 appVersion) NX;
     ND INL VkError pickPhysicalDevice
-                        (Compare<VkPhysicalDevice> = defaultCompare) NX;
+                        (Compare<VkPhysicalDevice> = defaultCompare,
+                         bool (*)(const VkPhysicalDevice&) = isSuitable) NX;
 }
 
 #undef DEFINE_VK_HANDLE
