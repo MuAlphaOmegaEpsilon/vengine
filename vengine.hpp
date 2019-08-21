@@ -11,7 +11,6 @@
 
 #include <vulkan/vulkan.h>                     // Vulkan header
 #include <vengine/vulkan/fwdecl_functions.hpp> // Public Vengine API
-#include <vengine/vulkan/helper.hpp>           // Helper functions
 #include <algorithm>
 
 // Namespace names shorteners
@@ -24,6 +23,22 @@
 // Throughout the code base vulkan errors are checked with `if(error)`
 // assuming that a non-error condition is equal to zero.
 static_assert (!VkResult::VK_SUCCESS, "VK_SUCCESS==0 assumption is invalid.");
+
+namespace 
+{
+    template <class T, class Fn, class ... Args>
+    VkError autoEnumerate
+                    (Fn vulkanFn,
+                    ui32& count,
+                    std::unique_ptr<T []>& elements,
+                    Args&&... args) NX
+    {
+        RET_ON_ERR (vulkanFn (args ..., &count, nullptr));
+        elements = std::make_unique<T []>(count);
+        return vulkanFn (args ..., &count, elements.get());
+    }
+}
+
 
 void VE_VK::destroy () NX
 {   using namespace VE_VK;
