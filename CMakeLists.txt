@@ -60,39 +60,62 @@ TARGET_COMPILE_FEATURES (vengine INTERFACE  cxx_alias_templates
 ###############################################################################
 #                                    FLAGS                                    #
 ###############################################################################
+INCLUDE (CheckCXXCompilerFlag)
+FUNCTION (TARGET_COMPILE_FLAGS target scope)
+    FOREACH (flag ${ARGN})
+        CHECK_CXX_COMPILER_FLAG(${flag} compile_flag)
+        IF (${result})
+            TARGET_COMPILE_OPTIONS(${target} ${scope} ${flag})
+        ENDIF ()
+        UNSET (compile_flag CACHE)
+    ENDFOREACH ()
+ENDFUNCTION ()
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_STANDARD 17)
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_STANDARD_REQUIRED ON)
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_EXTENSIONS OFF)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wall)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wextra)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Werror)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wpedantic)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -fno-exceptions)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -fno-rtti)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wdouble-promotion)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wformat=2)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wformat-overflow=2)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wformat-signedness)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wformat-truncation=2)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wnull-dereference)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wimplicit-fallthrough=5)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wmisleading-indentation)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wmissing-include-dirs)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wmultistatement-macros)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wparentheses)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wuninitialized)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Winit-self)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wstrict-aliasing=1)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wstrict-overflow=5)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wstringop-overflow=4)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Warray-bounds=2)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wtautological-compare)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wfloat-equal)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wshadow)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Wvector-operation-performance)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE -Weffc++)
-TARGET_COMPILE_OPTIONS (vengine INTERFACE --analyze-auto)
-
+TARGET_COMPILE_FLAGS (vengine INTERFACE -Wall
+                                        -Wextra
+                                        -Werror
+                                        -Wextra
+                                        -Werror
+                                        -Wpedantic
+                                        -fno-exceptions
+                                        -fno-rtti
+                                        -Wdouble-promotion
+                                        -Wformat=2
+                                        -Wformat-overflow=2
+                                        -Wformat-signedness
+                                        -Wformat-truncation=2
+                                        -Wnull-dereference
+                                        -Wimplicit-fallthrough=5
+                                        -Wmisleading-indentation
+                                        -Wmissing-include-dirs
+                                        -Wmultistatement-macros
+                                        -Wparentheses
+                                        -Wuninitialized
+                                        -Winit-self
+                                        -Wstrict-aliasing=1
+                                        -Wstrict-overflow=5
+                                        -Wstringop-overflow=4
+                                        -Warray-bounds=2
+                                        -Wtautological-compare
+                                        -Wfloat-equal
+                                        -Wshadow
+                                        -Wvector-operation-performance
+                                        -Weffc++)
+TARGET_COMPILE_FLAGS (vengine INTERFACE /Wall
+                                        /W4
+                                        /WX
+                                        /EH-
+                                        /GR-
+                                        /we4146
+                                        /we4308
+                                        /we4532
+                                        /we4533
+                                        /we4700
+                                        /we4703
+                                        /we4789
+                                        /we4996)
 
 
 
