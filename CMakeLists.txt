@@ -19,6 +19,14 @@ TARGET_SOURCES (vengine INTERFACE ${PROJECT_SOURCE_DIR}/vengine.cpp)
 
 
 ###############################################################################
+#                                   OPTIONS                                   #
+###############################################################################
+OPTION (USE_LOCAL_VULKAN "Use the Vulkan loader provided by this repository?" ON)
+
+
+
+
+###############################################################################
 #                                 DEPENDENCIES                                #
 ###############################################################################
 ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Headers)
@@ -94,11 +102,3 @@ TARGET_COMPILE_OPTIONS (vengine INTERFACE --analyze-auto)
 ###############################################################################
 TARGET_LINK_LIBRARIES (vengine INTERFACE Vulkan::Headers)
 TARGET_LINK_LIBRARIES (vengine INTERFACE Vulkan::Vulkan)
-
-
-
-
-###############################################################################
-#                                   OPTIONS                                   #
-###############################################################################
-OPTION (USE_LOCAL_VULKAN "Use the Vulkan loader provided by this repository?" ON)
