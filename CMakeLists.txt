@@ -34,17 +34,17 @@ ENDIF ()
 ###############################################################################
 #                                 REQUIREMENTS                                #
 ###############################################################################
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_alias_templates)
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_attributes)
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_constexpr)
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_enum_forward_declarations)
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_inline_namespaces)
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_noexcept)
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_nullptr)
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_relaxed_constexpr)
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_static_assert)
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_std_17)
-TARGET_COMPILE_FEATURES (vengine INTERFACE cxx_variadic_templates)
+TARGET_COMPILE_FEATURES (vengine INTERFACE  cxx_alias_templates
+                                            cxx_attributes
+                                            cxx_constexpr
+                                            cxx_enum_forward_declarations
+                                            cxx_inline_namespaces
+                                            cxx_noexcept
+                                            cxx_nullptr
+                                            cxx_relaxed_constexpr
+                                            cxx_static_assert
+                                            cxx_std_17
+                                            cxx_variadic_templates)
 
 
 
