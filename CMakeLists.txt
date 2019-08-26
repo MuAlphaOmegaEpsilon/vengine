@@ -78,7 +78,6 @@ IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
                                     /Wall
                                     /W4
                                     /WX
-                                    /EH-
                                     /GR-
                                     /we4146
                                     /we4308
