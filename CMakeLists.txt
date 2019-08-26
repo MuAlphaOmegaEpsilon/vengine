@@ -106,7 +106,6 @@ ELSE ()
                                     -Wimplicit-fallthrough=5
                                     -Wmisleading-indentation
                                     -Wmissing-include-dirs
-                                    -Wmultistatement-macros
                                     -Wparentheses
                                     -Wuninitialized
                                     -Winit-self
