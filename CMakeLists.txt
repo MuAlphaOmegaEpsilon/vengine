@@ -73,49 +73,54 @@ ENDFUNCTION ()
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_STANDARD 17)
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_STANDARD_REQUIRED ON)
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_EXTENSIONS OFF)
-TARGET_COMPILE_FLAGS (vengine INTERFACE -Wall
-                                        -Wextra
-                                        -Werror
-                                        -Wextra
-                                        -Werror
-                                        -Wpedantic
-                                        -fno-exceptions
-                                        -fno-rtti
-                                        -Wdouble-promotion
-                                        -Wformat=2
-                                        -Wformat-overflow=2
-                                        -Wformat-signedness
-                                        -Wformat-truncation=2
-                                        -Wnull-dereference
-                                        -Wimplicit-fallthrough=5
-                                        -Wmisleading-indentation
-                                        -Wmissing-include-dirs
-                                        -Wmultistatement-macros
-                                        -Wparentheses
-                                        -Wuninitialized
-                                        -Winit-self
-                                        -Wstrict-aliasing=1
-                                        -Wstrict-overflow=5
-                                        -Wstringop-overflow=4
-                                        -Warray-bounds=2
-                                        -Wtautological-compare
-                                        -Wfloat-equal
-                                        -Wshadow
-                                        -Wvector-operation-performance
-                                        -Weffc++)
-TARGET_COMPILE_FLAGS (vengine INTERFACE /Wall
-                                        /W4
-                                        /WX
-                                        /EH-
-                                        /GR-
-                                        /we4146
-                                        /we4308
-                                        /we4532
-                                        /we4533
-                                        /we4700
-                                        /we4703
-                                        /we4789
-                                        /we4996)
+IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+    TARGET_COMPILE_OPTIONS (vengine INTERFACE 
+                                    /Wall
+                                    /W4
+                                    /WX
+                                    /EH-
+                                    /GR-
+                                    /we4146
+                                    /we4308
+                                    /we4532
+                                    /we4533
+                                    /we4700
+                                    /we4703
+                                    /we4789
+                                    /we4996)
+ELSE ()
+    TARGET_COMPILE_FLAGS (vengine INTERFACE 
+                                    -Wall
+                                    -Wextra
+                                    -Werror
+                                    -Wextra
+                                    -Werror
+                                    -Wpedantic
+                                    -fno-exceptions
+                                    -fno-rtti
+                                    -Wdouble-promotion
+                                    -Wformat=2
+                                    -Wformat-overflow=2
+                                    -Wformat-signedness
+                                    -Wformat-truncation=2
+                                    -Wnull-dereference
+                                    -Wimplicit-fallthrough=5
+                                    -Wmisleading-indentation
+                                    -Wmissing-include-dirs
+                                    -Wmultistatement-macros
+                                    -Wparentheses
+                                    -Wuninitialized
+                                    -Winit-self
+                                    -Wstrict-aliasing=1
+                                    -Wstrict-overflow=5
+                                    -Wstringop-overflow=4
+                                    -Warray-bounds=2
+                                    -Wtautological-compare
+                                    -Wfloat-equal
+                                    -Wshadow
+                                    -Wvector-operation-performance
+                                    -Weffc++)
+ENDIF ()
 
 
 
