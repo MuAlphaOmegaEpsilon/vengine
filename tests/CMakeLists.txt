@@ -19,7 +19,7 @@ SET (CMAKE_CXX_EXTENSIONS OFF)
 
 
 ###############################################################################
-#                            LIBRARIES INCLUSION                              #
+#                                 DEPENDENCIES                                #
 ###############################################################################
 ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/.. ${PROJECT_SOURCE_DIR}/build/vengine)
 
