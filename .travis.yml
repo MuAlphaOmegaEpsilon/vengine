@@ -21,7 +21,7 @@ matrix:
     before_script: 
     - sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
     - cp "${LIBINTERCEPTOR_DIR}"/libinterceptor-x86_64.so "${LIBINTERCEPTOR_DIR}"/libinterceptor-haswell.so 
-    after_script: sonar-scanner
+    after_script: cd ../.. && sonar-scanner
     
   - os: osx
     osx_image: xcode11
