@@ -12,12 +12,15 @@ matrix:
     env: 
     - CMAKE_ARGS="-DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF -DCOVERAGE_FLAG=--coverage"
     - CMAKE_BUILD_WRAPPER="build-wrapper-linux-x86-64 --out-dir ."    
+    - LIBINTERCEPTOR_DIR="/home/travis/.sonar/cache/681277d525b6e4c5ed5e6c2a429caa64/build-wrapper-linux-x86"  
     addons:
       apt:
         packages: mesa-vulkan-drivers
       sonarcloud:
         organization: "mualphaomegaepsilon-github"
-    before_script: sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
+    before_script: 
+    - sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
+    - cp "${LIBINTERCEPTOR_DIR}"/libinterceptor-x86_64.so "${LIBINTERCEPTOR_DIR}"/libinterceptor-haswell.so 
     after_script: sonar-scanner
     
   - os: osx
