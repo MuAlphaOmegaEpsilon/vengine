@@ -19,13 +19,6 @@ matrix:
         organization: "mualphaomegaepsilon-github"
     before_script: sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
     after_script: sonar-scanner
-        
-  - os: linux
-    compiler: clang
-    env: CMAKE_ARGS="-DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF"
-    addons:
-      apt:
-        packages: mesa-vulkan-drivers
     
   - os: osx
     osx_image: xcode11
