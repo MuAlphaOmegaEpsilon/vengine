@@ -49,7 +49,6 @@ TARGET_COMPILE_FEATURES (vengine INTERFACE  cxx_alias_templates
                                             cxx_inline_namespaces
                                             cxx_noexcept
                                             cxx_nullptr
-                                            cxx_relaxed_constexpr
                                             cxx_static_assert
                                             cxx_std_17
                                             cxx_variadic_templates)
