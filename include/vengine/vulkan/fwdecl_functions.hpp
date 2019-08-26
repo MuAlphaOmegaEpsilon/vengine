@@ -89,8 +89,8 @@ extern "C" namespace vengine::vulkan
                         (const char* appName,
                          ui32 appVersion) NX;
     ND INL VkError pickPhysicalDevice
-                        (Compare<VkPhysicalDevice> = defaultCompare,
-                         bool (*)(const VkPhysicalDevice&) = isSuitable) NX;
+                        (Compare<VkPhysicalDevice>,
+                         bool (*)(const VkPhysicalDevice&)) NX;
 }
 
 #undef DEFINE_VK_HANDLE
