@@ -8,7 +8,8 @@
  */
 
 // Declaration shorteners
-#define DEFINE_VK_HANDLE(name) struct name##_T; using name = name##_T*
+#define CONCAT(a, b) a ## b
+#define DEFINE_VK_HANDLE(name) struct CONCAT(name, _T); using name = CONCAT(name, _T*)
 // Helper macro, never undefined
 #ifndef RET_ON_ERR
     #define RET_ON_ERR(fnCall) if (const VkError e = fnCall; e) return e
