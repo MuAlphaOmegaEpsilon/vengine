@@ -85,7 +85,12 @@ IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
                                     /we4700
                                     /we4703
                                     /we4789
-                                    /we4996)
+                                    /we4996
+                                    /we34057
+                                    /we34245
+                                    /we34456
+                                    /we34701
+                                    /we34703)
 ELSE ()
     TARGET_COMPILE_FLAGS (vengine INTERFACE 
                                     -Wall
