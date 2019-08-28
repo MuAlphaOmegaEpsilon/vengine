@@ -1,6 +1,7 @@
 language: cpp
 dist: bionic
 git:
+  submodules: false
   depth: false
 
 matrix:
@@ -31,6 +32,8 @@ matrix:
     env: CMAKE_ARGS="-DWDK_FULL_PATH=C:/Users/travis/build/MuAlphaOmegaEpsilon/vengine/libs/wdk-10"
 
 script:
+- if [ "$TRAVIS_OS_NAME" = "windows" ]; then git submodule update --init --depth 1 libs/wdk-10/; fi
+- git submodule update --init --depth 1 libs/Vulkan-Headers/ libs/Vulkan-Loader/
 - mkdir -p tests/build && cd tests/build
 - cmake .. ${CMAKE_ARGS}
 - ${CMAKE_BUILD_WRAPPER} cmake --build .
