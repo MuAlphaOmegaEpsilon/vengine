@@ -21,7 +21,7 @@ TARGET_SOURCES (vengine INTERFACE ${PROJECT_SOURCE_DIR}/vengine.cpp)
 ###############################################################################
 #                                   OPTIONS                                   #
 ###############################################################################
-OPTION (USE_LOCAL_VULKAN "Use the Vulkan loader provided by this repository?" ON)
+OPTION (BUILD_LOADER "Build loader" ON)
 
 
 
@@ -30,9 +30,8 @@ OPTION (USE_LOCAL_VULKAN "Use the Vulkan loader provided by this repository?" ON
 #                                 DEPENDENCIES                                #
 ###############################################################################
 ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Headers)
-IF (USE_LOCAL_VULKAN)
-    ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Loader)
-ELSE ()
+ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Loader)
+IF NOT (BUILD_LOADER)
     FIND_PACKAGE (Vulkan REQUIRED)
 ENDIF ()
 
