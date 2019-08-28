@@ -31,7 +31,7 @@ OPTION (BUILD_LOADER "Build loader" ON)
 ###############################################################################
 ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Headers)
 ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Loader)
-IF NOT (BUILD_LOADER)
+IF (NOT BUILD_LOADER)
     FIND_PACKAGE (Vulkan REQUIRED)
 ENDIF ()
 
