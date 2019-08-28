@@ -92,8 +92,6 @@ ELSE ()
                                     -Wall
                                     -Wextra
                                     -Werror
-                                    -Wextra
-                                    -Werror
                                     -Wpedantic
                                     -fno-exceptions
                                     -fno-rtti
@@ -106,7 +104,6 @@ ELSE ()
                                     -Wimplicit-fallthrough=5
                                     -Wmisleading-indentation
                                     -Wmissing-include-dirs
-                                    -Wmultistatement-macros
                                     -Wparentheses
                                     -Wuninitialized
                                     -Winit-self
