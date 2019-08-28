@@ -8,6 +8,7 @@ matrix:
   include:
   
   - os: linux
+    name: GCC (sonar-scanner, coverage)
     compiler: gcc  
     env: 
     - CMAKE_ARGS="-DCMAKE_CXX_FLAGS=--coverage -DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF"
@@ -24,9 +25,11 @@ matrix:
     after_script: cd ../.. && sonar-scanner
     
   - os: osx
+    name: Clang
     osx_image: xcode11
   
   - os: windows
+    name: MSVC
     env: CMAKE_ARGS="-DWDK_FULL_PATH=C:/Users/travis/build/MuAlphaOmegaEpsilon/vengine/libs/wdk-10"
 
 script:
