@@ -92,8 +92,6 @@ ELSE ()
                                     -Wall
                                     -Wextra
                                     -Werror
-                                    -Wextra
-                                    -Werror
                                     -Wpedantic
                                     -fno-exceptions
                                     -fno-rtti
