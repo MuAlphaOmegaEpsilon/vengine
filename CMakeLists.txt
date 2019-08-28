@@ -21,7 +21,7 @@ TARGET_SOURCES (vengine INTERFACE ${PROJECT_SOURCE_DIR}/vengine.cpp)
 ###############################################################################
 #                                   OPTIONS                                   #
 ###############################################################################
-OPTION (USE_LOCAL_VULKAN "Use the Vulkan loader provided by this repository?" ON)
+OPTION (BUILD_LOADER "Build loader" ON)
 
 
 
@@ -30,9 +30,8 @@ OPTION (USE_LOCAL_VULKAN "Use the Vulkan loader provided by this repository?" ON
 #                                 DEPENDENCIES                                #
 ###############################################################################
 ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Headers)
-IF (USE_LOCAL_VULKAN)
-    ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Loader)
-ELSE ()
+ADD_SUBDIRECTORY (${PROJECT_SOURCE_DIR}/libs/Vulkan-Loader)
+IF (NOT BUILD_LOADER)
     FIND_PACKAGE (Vulkan REQUIRED)
 ENDIF ()
 
@@ -75,6 +74,7 @@ SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_STANDARD_REQUIRED ON)
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_EXTENSIONS OFF)
 IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     TARGET_COMPILE_OPTIONS (vengine INTERFACE 
+                                    /MP
                                     /Wall
                                     /W4
                                     /WX
@@ -86,7 +86,12 @@ IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
                                     /we4700
                                     /we4703
                                     /we4789
-                                    /we4996)
+                                    /we4996
+                                    /we34057
+                                    /we34245
+                                    /we34456
+                                    /we34701
+                                    /we34703)
 ELSE ()
     TARGET_COMPILE_FLAGS (vengine INTERFACE 
                                     -Wall
