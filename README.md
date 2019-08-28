@@ -12,7 +12,6 @@ A C++17 Vulkan barebone engine.
 ![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=MuAlphaOmegaEpsilon_vengine&metric=sqale_rating)
 ![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=MuAlphaOmegaEpsilon_vengine&metric=security_rating)
 ![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=MuAlphaOmegaEpsilon_vengine&metric=reliability_rating)
-![Coverage](https://sonarcloud.io/api/project_badges/measure?project=MuAlphaOmegaEpsilon_vengine&metric=coverage)
 ![Bugs](https://sonarcloud.io/api/project_badges/measure?project=MuAlphaOmegaEpsilon_vengine&metric=bugs)
 ![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=MuAlphaOmegaEpsilon_vengine&metric=code_smells)
 ![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=MuAlphaOmegaEpsilon_vengine&metric=vulnerabilities)
