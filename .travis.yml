@@ -8,9 +8,10 @@ matrix:
   include:
   
   - os: linux
+    name: GCC (sonar-scanner)
     compiler: gcc  
     env: 
-    - CMAKE_ARGS="-DCMAKE_CXX_FLAGS=--coverage -DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF"
+    - CMAKE_ARGS="-DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF"
     - CMAKE_BUILD_WRAPPER="build-wrapper-linux-x86-64 --out-dir ."    
     - LIBINTERCEPTOR_DIR="/home/travis/.sonar/cache/681277d525b6e4c5ed5e6c2a429caa64/build-wrapper-linux-x86"  
     addons:
@@ -19,14 +20,15 @@ matrix:
       sonarcloud:
         organization: "mualphaomegaepsilon-github"
     before_script: 
-    - sudo rm /usr/bin/gcov && sudo ln -s /usr/bin/gcov-5 /usr/bin/gcov
     - cp "${LIBINTERCEPTOR_DIR}"/libinterceptor-x86_64.so "${LIBINTERCEPTOR_DIR}"/libinterceptor-haswell.so 
     after_script: cd ../.. && sonar-scanner
     
   - os: osx
+    name: Clang
     osx_image: xcode11
   
   - os: windows
+    name: MSVC
     env: CMAKE_ARGS="-DWDK_FULL_PATH=C:/Users/travis/build/MuAlphaOmegaEpsilon/vengine/libs/wdk-10"
 
 script:
