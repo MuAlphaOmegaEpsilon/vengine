@@ -21,7 +21,7 @@ matrix:
         organization: "mualphaomegaepsilon-github"
     before_script: 
     - cp "${LIBINTERCEPTOR_DIR}"/libinterceptor-x86_64.so "${LIBINTERCEPTOR_DIR}"/libinterceptor-haswell.so 
-    after_script: cd ../.. && sonar-scanner
+    after_script: cd ../.. && sonar-scanner > /dev/null
     
   - os: osx
     name: Clang
