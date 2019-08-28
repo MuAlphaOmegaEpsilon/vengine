@@ -74,6 +74,7 @@ SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_STANDARD_REQUIRED ON)
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_EXTENSIONS OFF)
 IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     TARGET_COMPILE_OPTIONS (vengine INTERFACE 
+                                    /MP
                                     /Wall
                                     /W4
                                     /WX
