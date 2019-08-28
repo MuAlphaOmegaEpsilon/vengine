@@ -9,7 +9,6 @@ matrix:
   
   - os: linux
     name: GCC (sonar-scanner)
-    compiler: gcc  
     env: 
     - CMAKE_ARGS="-DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF"
     - CMAKE_BUILD_WRAPPER="build-wrapper-linux-x86-64 --out-dir ."    
