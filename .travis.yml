@@ -29,7 +29,9 @@ matrix:
   
   - os: windows
     name: MSVC
-    env: CMAKE_ARGS="-DWDK_FULL_PATH=C:/Users/travis/build/MuAlphaOmegaEpsilon/vengine/libs/wdk-10"
+    env: 
+    - CMAKE_ARGS="-DWDK_FULL_PATH=C:/Users/travis/build/MuAlphaOmegaEpsilon/vengine/libs/wdk-10"
+    - CMAKE_BUILD_ARGS="-- /nologo /verbosity:minimal"
 
 script:
 - git submodule update --init --depth 1 libs/Vulkan-Headers
@@ -37,6 +39,6 @@ script:
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then git submodule update --init --depth 1 libs/wdk-10; fi
 - mkdir -p tests/build && cd tests/build
 - cmake .. ${CMAKE_ARGS}
-- ${CMAKE_BUILD_WRAPPER} cmake --build .
+- ${CMAKE_BUILD_WRAPPER} cmake --build . ${CMAKE_BUILD_ARGS}
 # Only test runtime under Linux, since osx and Windows are missing drivers
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ctest -j2; fi
