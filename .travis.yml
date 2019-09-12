@@ -40,5 +40,3 @@ script:
 - mkdir -p tests/build && cd tests/build
 - cmake .. ${CMAKE_ARGS}
 - ${CMAKE_BUILD_WRAPPER} cmake --build . ${CMAKE_BUILD_ARGS}
-# Only test runtime under Linux, since osx and Windows are missing drivers
-- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ctest -j2; fi
