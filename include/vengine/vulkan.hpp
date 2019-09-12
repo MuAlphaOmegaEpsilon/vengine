@@ -72,6 +72,19 @@ VkError VE_VK::initialize
     return vkCreateInstance (&instancingInfo, allocator, &instance);
 }
 
+VkError VE_VK::pickPhysicalDevice
+                (UnaryPred<VkPhysicalDevice> filter,
+                 UnaryScore<VkPhysicalDevice> score) NX
+{   using namespace VE_VK::enumerate;
+    using namespace vengine::algorithm;
+	uint32_t count = 0;
+    uptr <VkPhysicalDevice []> devices;
+    PROPAGATE (getPhysicalDevices(count, devices));
+
+    VkPhysicalDevice* ptr = devices.get();
+    physicalDevice = *max(ptr, ptr + count, score, filter);
+    return VK_SUCCESS;
+}
 
 #undef VE_VK
 #undef VE_VK_DE
