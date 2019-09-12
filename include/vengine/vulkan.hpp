@@ -39,8 +39,8 @@ extern "C" namespace vengine::vulkan
                         (const char* appName,
                          ui32 appVersion) NX;
     ND INL VkError pickPhysicalDevice
-                        (UnaryPred<VkPhysicalDevice> = isDeviceSuitable,
-                         UnaryScore<VkPhysicalDevice> = scoreDevice) NX;
+                        (UnaryPred<VkPhysicalDevice> f = VE_VK_DE::isDeviceSuitable,
+                         UnaryScore<VkPhysicalDevice> s = VE_VK_DE::scoreDevice) NX;
 }
 
 void VE_VK::destroy () NX
