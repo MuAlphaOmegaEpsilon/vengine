@@ -13,7 +13,7 @@ PROJECT (vengine VERSION 1.0.0 LANGUAGES CXX DESCRIPTION "A C++17 Vulkan barebon
 ADD_LIBRARY (vengine INTERFACE)
 TARGET_INCLUDE_DIRECTORIES (vengine INTERFACE ${PROJECT_SOURCE_DIR})
 TARGET_INCLUDE_DIRECTORIES (vengine INTERFACE ${PROJECT_SOURCE_DIR}/include)
-TARGET_SOURCES (vengine INTERFACE ${PROJECT_SOURCE_DIR}/vengine.cpp)
+TARGET_SOURCES (vengine INTERFACE ${PROJECT_SOURCE_DIR}/include/vengine/vulkan/vulkan.cpp)
 
 
 
@@ -58,17 +58,6 @@ TARGET_COMPILE_FEATURES (vengine INTERFACE  cxx_alias_templates
 ###############################################################################
 #                                    FLAGS                                    #
 ###############################################################################
-INCLUDE (CheckCXXCompilerFlag)
-FUNCTION (TARGET_COMPILE_FLAGS target scope)
-    FOREACH (flag ${ARGN})
-        STRING (REGEX REPLACE "^-|/" "" flag_name ${flag})
-        CHECK_CXX_COMPILER_FLAG(${flag} ${flag_name})
-        IF (${flag_name})
-            TARGET_COMPILE_OPTIONS(${target} ${scope} ${flag})
-        ENDIF ()
-        UNSET (${flag_name} CACHE)
-    ENDFOREACH ()
-ENDFUNCTION ()
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_STANDARD 17)
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_STANDARD_REQUIRED ON)
 SET_PROPERTY (TARGET vengine PROPERTY INTERFACE_CMAKE_CXX_EXTENSIONS OFF)
@@ -93,7 +82,7 @@ IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
                                     /we34701
                                     /we34703)
 ELSE ()
-    TARGET_COMPILE_FLAGS (vengine INTERFACE 
+    TARGET_COMPILE_OPTIONS (vengine INTERFACE 
                                     -Wall
                                     -Wextra
                                     -Werror
@@ -120,7 +109,8 @@ ELSE ()
                                     -Wfloat-equal
                                     -Wshadow
                                     -Wvector-operation-performance
-                                    -Weffc++)
+                                    -Weffc++
+                                    -Wno-unknown-warning-option)
 ENDIF ()
 
 
