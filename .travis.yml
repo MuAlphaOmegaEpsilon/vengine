@@ -32,11 +32,12 @@ matrix:
     env: 
     - CMAKE_ARGS="-DWDK_FULL_PATH=C:/Users/travis/build/MuAlphaOmegaEpsilon/vengine/libs/wdk-10 -DCMAKE_SUPPRESS_REGENERATION=ON"
     - CMAKE_BUILD_ARGS="-- -nologo -verbosity:minimal"
+    before_script: 
+    - git submodule update --init --depth 1 --remote libs/wdk-10
 
 script:
 - git submodule update --init --depth 1 --remote libs/Vulkan-Headers
 - git submodule update --init --depth 1 --remote libs/Vulkan-Loader
-- if [ "$TRAVIS_OS_NAME" = "windows" ]; then git submodule update --init --depth 1 --remote libs/wdk-10; fi
 - mkdir -p tests/build && cd tests/build
 - cmake .. ${CMAKE_ARGS}
 - ${CMAKE_BUILD_WRAPPER} cmake --build . ${CMAKE_BUILD_ARGS}
