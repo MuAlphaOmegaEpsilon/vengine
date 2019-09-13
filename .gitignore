@@ -6,6 +6,7 @@
 !/libs
 !/tests
 !/.git
+!/.github
 
 # ...and except these files down here...
 !/vengine.cpp
@@ -15,4 +16,3 @@
 !/README.md
 !/sonar-project.properties
 !/.gitignore
-!/.travis.yml
