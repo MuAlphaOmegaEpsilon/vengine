@@ -1,22 +1,17 @@
 name: CMake C++ CI
 on: [push]
 
-runs-on: ${{matrix.os}}
 jobs:
-  strategy:
-    matrix:
-      os: [ubuntu-latest, macos-latest, windows-latest]
-      include:
-      - os: ubuntu-latest
-        env: STRING="Ubuntu"
-      - os: macos-latest
-        env: STRING="OSX"
-      - os: windows-latest
-        env: STRING="Windows"
-
-      steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Trying to echo env
-        run: echo ${STRING}
-        
+  build:
+    name: GCC - Linux
+    runs-on: ubuntu-latest
+    steps:
+    - name: Step one
+      env:
+        CMAKE_ARGS: -DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF
+        CMAKE_BUILD_WRAPPER: build-wrapper-linux-x86-64 --out-dir .  
+      run: |
+        mkdir -p tests/build && cd tests/build
+        cmake .. ${CMAKE_ARGS}
+        cmake --build . ${CMAKE_BUILD_ARGS}
+      # uses: sonarsource/sonarcloud-github-action@master
