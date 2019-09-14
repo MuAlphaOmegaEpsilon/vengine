@@ -7,18 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-      with:
+      with: 
         fetch-depth: 1
     - name: Pull submodules
-      run: git submodule update --init libs/Vulkan-Headers libs/Vulkan-Loader
+      run: pwd && git submodule update --init libs/Vulkan-Headers libs/Vulkan-Loader
     - name: Create build configuration
       run: |
-        mkdir -p tests/build && cd tests/build |
-        cmake .. ${CMAKE_ARGS} 
-        # cmake --build . ${CMAKE_BUILD_ARGS} | 
-      # env:
-        # CMAKE_ARGS: -DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF
-        # CMAKE_BUILD_WRAPPER: build-wrapper-linux-x86-64 --out-dir .  
-      # run: echo Hello world
-        
-      # uses: sonarsource/sonarcloud-github-action@master
+        cd tests && mkdir build && cd build && pwd && cmake .. && pwd
+
+
+# cmake --build . ${CMAKE_BUILD_ARGS} | 
+# env:
+# CMAKE_ARGS: -DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF
+# CMAKE_BUILD_WRAPPER: build-wrapper-linux-x86-64 --out-dir .  
+# run: echo Hello world
+
+# uses: sonarsource/sonarcloud-github-action@master
