@@ -13,7 +13,7 @@ jobs:
       run: pwd && git submodule update --init libs/Vulkan-Headers libs/Vulkan-Loader
     - name: Create build configuration
       run: |
-        cd tests && mkdir build && cd build && pwd && cmake .. && pwd
+        cd tests && mkdir build && cd build && pwd && cmake .. -DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF && pwd
 
 
 # cmake --build . ${CMAKE_BUILD_ARGS} | 
