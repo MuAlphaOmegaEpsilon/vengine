@@ -6,6 +6,7 @@ jobs:
     name: GCC - Linux
     runs-on: ubuntu-latest
     steps:
+    - uses: sonarsource/sonarcloud-github-action@master
     - uses: actions/checkout@master
       with: 
         fetch-depth: 1
@@ -17,8 +18,11 @@ jobs:
         cd tests/build
         cmake .. -DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF
     - name: Build
-      run: cmake --build . --parallel
-    - uses: sonarsource/sonarcloud-github-action@master
+      run: |
+       cd tests/build
+       cmake --build . --parallel
+    - name: Sonarcloud
+      run: sonar-scanner .
 
 
 
