@@ -18,6 +18,8 @@ jobs:
         cmake .. -DBUILD_WSI_XCB_SUPPORT=OFF -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_WAYLAND_SUPPORT=OFF
     - name: Build
       run: cmake --build . --parallel
+    - uses: sonarsource/sonarcloud-github-action@master
+
 
 
 # cmake --build . ${CMAKE_BUILD_ARGS} | 
