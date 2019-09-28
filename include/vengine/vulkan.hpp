@@ -33,8 +33,8 @@ namespace vengine::vulkan
 #include <vengine/vulkan/enumerate.hpp>
 
 extern "C" namespace vengine::vulkan
-{   using namespace VE_VK::defaults;
-    using namespace vengine::algorithm;
+{   using namespace VE_AL;
+    using namespace VE_VK::defaults;
     INL void destroy () NX;
     ND INL VkError initialize
                         (const char* appName,
