@@ -20,7 +20,11 @@ matrix:
       sonarcloud:
         organization: "mualphaomegaepsilon-github"
     before_script: 
-    - cp "${LIBINTERCEPTOR_DIR}"/libinterceptor-x86_64.so "${LIBINTERCEPTOR_DIR}"/libinterceptor-haswell.so 
+    - pushd .
+    - LIBINTERCEPTOR=$(find /home/travis/.sonar/cache -name libinterceptor-x86_64.so)
+    - cd $(dirname "${LIBINTERCEPTOR}")
+    - cp libinterceptor-x86_64.so libinterceptor-haswell.so
+    - popd
     after_script: cd ../.. && sonar-scanner > /dev/null
     
   - os: osx
