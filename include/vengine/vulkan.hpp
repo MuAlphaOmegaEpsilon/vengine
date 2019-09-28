@@ -7,6 +7,7 @@
  * @date 12-09-2019
  */
 
+#define VE_AL vengine::algorithm
 #define VE_VK vengine::vulkan
 #define VE_VK_DE vengine::vulkan::defaults
 #define VE_VK_EN vengine::vulkan::enumerate
@@ -73,10 +74,10 @@ VkError VE_VK::initialize
 }
 
 VkError VE_VK::pickPhysicalDevice
-                (UnaryPred<VkPhysicalDevice> filter,
-                 UnaryScore<VkPhysicalDevice> score) NX
-{   using namespace VE_VK::enumerate;
-    using namespace vengine::algorithm;
+                (VE_AL::UnaryPred<VkPhysicalDevice> filter,
+                 VE_AL::UnaryScore<VkPhysicalDevice> score) NX
+{   using namespace VE_AL;
+    using namespace VE_VK::enumerate;
 	uint32_t count = 0;
     uptr <VkPhysicalDevice []> devices;
     PROPAGATE (getPhysicalDevices(count, devices));
@@ -86,6 +87,7 @@ VkError VE_VK::pickPhysicalDevice
     return VK_SUCCESS;
 }
 
+#undef VE_AL
 #undef VE_VK
 #undef VE_VK_DE
 #undef VE_VK_EN
