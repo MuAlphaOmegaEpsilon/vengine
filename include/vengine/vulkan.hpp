@@ -7,6 +7,7 @@
  * @date 12-09-2019
  */
 
+#define VE_AL vengine::algorithm
 #define VE_VK vengine::vulkan
 #define VE_VK_DE vengine::vulkan::defaults
 #define VE_VK_EN vengine::vulkan::enumerate
@@ -32,15 +33,15 @@ namespace vengine::vulkan
 #include <vengine/vulkan/enumerate.hpp>
 
 extern "C" namespace vengine::vulkan
-{   using namespace VE_VK::defaults;
-    using namespace vengine::algorithm;
+{   using namespace VE_AL;
+    using namespace VE_VK::defaults;
     INL void destroy () NX;
     ND INL VkError initialize
                         (const char* appName,
                          ui32 appVersion) NX;
     ND INL VkError pickPhysicalDevice
-                        (UnaryPred<VkPhysicalDevice> = isDeviceSuitable,
-                         UnaryScore<VkPhysicalDevice> = scoreDevice) NX;
+                        (UnaryPred<VkPhysicalDevice> f = isDeviceSuitable,
+                         UnaryScore<VkPhysicalDevice> s = scoreDevice) NX;
 }
 
 void VE_VK::destroy () NX
@@ -72,7 +73,21 @@ VkError VE_VK::initialize
     return vkCreateInstance (&instancingInfo, allocator, &instance);
 }
 
+VkError VE_VK::pickPhysicalDevice
+                (VE_AL::UnaryPred<VkPhysicalDevice> filter,
+                 VE_AL::UnaryScore<VkPhysicalDevice> score) NX
+{   using namespace VE_AL;
+    using namespace VE_VK::enumerate;
+	uint32_t count = 0;
+    uptr <VkPhysicalDevice []> devices;
+    PROPAGATE (getPhysicalDevices(count, devices));
 
+    VkPhysicalDevice* ptr = devices.get();
+    physicalDevice = *max(ptr, ptr + count, score, filter);
+    return VK_SUCCESS;
+}
+
+#undef VE_AL
 #undef VE_VK
 #undef VE_VK_DE
 #undef VE_VK_EN

@@ -14,11 +14,11 @@
 
 namespace vengine::algorithm
 {
-    template <class T> using UnaryScore = ui32 (* const)
+    template <class T> using UnaryScore = ui32 (*const)
                                             (const T&);
-    template <class T> using UnaryPred  = bool (* const)
+    template <class T> using UnaryPred  = bool (*const)
                                             (const T&);
-    template <class T> using BinaryPred = bool (* const)
+    template <class T> using BinaryPred = bool (*const)
                                             (const T&,
                                              const T&);
 

@@ -33,11 +33,12 @@ INCLUDE (CTest)
 
 ADD_EXECUTABLE (01_initializeVulkan 01_initializeVulkan.cpp)
 ADD_EXECUTABLE (02_getPhysicalDevices 02_getPhysicalDevices.cpp)
+ADD_EXECUTABLE (03_pickPhysicalDevice 03_pickPhysicalDevice.cpp)
 
 TARGET_LINK_LIBRARIES (01_initializeVulkan PUBLIC vengine)
 TARGET_LINK_LIBRARIES (02_getPhysicalDevices PUBLIC vengine)
+TARGET_LINK_LIBRARIES (03_pickPhysicalDevice PUBLIC vengine)
 
 ADD_TEST ([01]initializeVulkan 01_initializeVulkan)
 ADD_TEST ([02]getPhysicalDevices 02_getPhysicalDevices)
-
-
+ADD_TEST ([03]pickPhysicalDevice 03_pickPhysicalDevice)
